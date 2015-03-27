@@ -63,6 +63,12 @@
 
 		});
 		
+		$('.js__new-lookup-input').keydown(function(event){    
+			if(event.keyCode==13){
+				$('.js__new-lookup-button').trigger('click');
+			}
+		});
+		
 		$('.js__new-lookup-button').on('click', function (e) {
 
 			e.preventDefault();
@@ -89,10 +95,12 @@
 					if ((buttonVal).length == 2) {
 						
 						addBox (buttonVal, 'special');
+						$('.js__new-lookup-input').val('');
 						
 					} else {
 					
 						addBox (buttonVal, 'diceware');
+						$('.js__new-lookup-input').val('');
 					
 					}
 					
