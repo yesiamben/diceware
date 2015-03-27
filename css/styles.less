@@ -1,0 +1,374 @@
+// .person {}       - person
+// .person__head {} - element of person
+// .person--tall {} - modifier of person
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+/* LESS VARIABLES */
+
+
+	// Blacks
+	@RBGBlack100: rgba(0,0,0,1);
+	@RBGBlack90:  rgba(0,0,0,0.9);
+	@RBGBlack70:  rgba(0,0,0,0.7);
+	@RBGBlack50:  rgba(0,0,0,0.5);
+	@RBGBlack40:  rgba(0,0,0,0.4);
+	@RBGBlack32:  rgba(0,0,0,0.32);
+	@RBGBlack25:  rgba(0,0,0,0.25);
+	@RBGBlack15:  rgba(0,0,0,0.15);
+	@RBGBlack10:  rgba(0,0,0,0.10);
+
+	// Box Sizing
+	.boxSize {
+		-moz-box-sizing: border-box; 
+		-webkit-box-sizing: border-box; 
+		box-sizing: border-box; 
+	}
+
+	// Box Shadow
+	.box-shadow (@x: 0px, @y: 1px, @blur: 2px, @color: @RBGBlack50) {
+		-moz-box-shadow: @arguments;
+		-webkit-box-shadow: @arguments;
+		box-shadow: @arguments;
+	}
+	.box-shadow-light {
+		.box-shadow(0px, 2px, 2px, @RBGBlack25);
+	}
+	.box-shadow-bold {
+		.box-shadow(0px, 0px, 20px, @RBGBlack50);
+	}
+	.box-shadow-bolder {
+		.box-shadow(0px, 0px, 30px, @RBGBlack90);
+	}
+
+	.box-shadow-none {
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+	}
+
+
+	// Text Shadow
+	.text-shadow (@x: 0px, @y: 1px, @blur: 2px, @color: @RBGBlack100) {
+		text-shadow: @arguments;
+	}
+
+
+	// .transition(all, .2s, linear);
+	.transition (@effect: all, @time: .3s, @trans: linear) {
+		-webkit-transition: @effect @time @trans;
+	    -o-transition: @effect @time @trans;
+	    -moz-transition: @effect @time @trans;
+	    -ms-transition: @effect @time @trans;
+	    -kthtml-transition: @effect @time @trans;
+	    transition: @effect @time @trans;
+	}
+
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+/* RESETS */
+	
+	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, 
+	form, fieldset, input, p, blockquote, table, th, td, embed, 
+	object, menu, nav, aside, section, article {
+		padding: 0;
+		margin: 0;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+		font-size: inherit;
+		font: inherit;
+		font-size: 100%;
+	}
+	a, fieldset, img, abbr {
+		border: 0;
+		border: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0); 
+	}
+	address, caption, cite, code, dfn, em, 
+	h1, h2, h3, h4, h5, h6, strong, th, var {
+		font-weight: normal;
+		font-style: normal;
+	}
+	ul {
+		list-style: disc outside;
+	}
+	caption, th {
+		text-align: left;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		font-size:100%;
+	}
+	q:before, q:after {
+		content: '';
+	}
+	ins {
+		text-decoration: none;
+	}
+	
+	/* Clear */
+	.clear{
+		clear: both;
+		display: block;
+		overflow: hidden;
+		visibility: hidden;
+		width: 0;
+		height: 0;
+	}
+	
+	b, strong, em {
+		font-weight: bold;
+	}
+	
+	input, textarea {
+		font-size: inherit;
+		font: inherit;
+	}
+	input:focus, a:focus, select, input, textarea, :focus {
+		outline: none;
+	}
+	
+	// Remove as necessary
+	html, body {
+		height: 100%;
+	}
+	
+	body {
+		font-size: 62.5%;
+		font-family: Arial, Helvetica, sans-serif;
+		font-family: 'Roboto', sans-serif;
+		height: 100%;
+		min-height: 100%;
+		color: #111;
+		background-color: #fff;
+	}
+	
+	::selection {
+		background-color: #000;
+	}
+	::-moz-selection {
+		background-color: #000;
+	}
+	
+	a {
+		color: #00f;
+	}
+		a:hover {
+		}
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+/* LAYOUT */  // Section as best as possible.
+
+	// Generic
+	
+	.w900 {
+		display: block;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 900px;
+	}
+		.w100pc {
+			width: 100%;
+			padding: 0 10px;
+			.boxSize;
+		}
+		
+	
+	.header {
+		padding-top: 30px;
+	}
+		.header__title {
+			font-size: 30px;
+			text-align: center;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		
+		.header__info {
+			text-align: center;
+			font-size: 16px;
+			margin-bottom: 10px;
+			line-height: 150%;
+		}
+			.header__info-red {
+				color: #c00;
+			}
+	
+	
+	.new-diceword {
+		width: 100%;
+		text-align: center;
+		margin: 30px 0;
+		margin-top: 10px;
+		padding: 20px;
+		border-top: 1px solid #ccc;
+		border-bottom: 1px solid #ccc;
+		min-height: 164px;
+		.boxSize;
+	}
+		.new-diceword__box {
+			display: inline-block;
+			margin: 5px;
+			text-align: center;
+			border: 1px solid #999;
+			border-radius: 4px;
+			background-color: #fff;
+			overflow: hidden;
+			cursor: pointer;
+			.box-shadow-light();
+		}
+			.new-diceword__box-top {
+				display: block;
+				font-size: 30px;
+				line-height: 50px;
+				padding: 10px;
+				padding-bottom: 9px;
+				border-bottom: 1px solid #999;
+			}
+			.new-diceword__box-bottom {
+				display: block;
+				font-size: 11px;
+				line-height: 19px;
+				padding: 10px;
+				padding-top: 9px;
+				background-color: #f3f3f3;
+			}
+		
+	.list-title {
+		color: #999;
+		font-size: 14px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 20px;
+		margin-top: 30px;
+	}
+	
+	
+	.new-word-button {
+		text-align: center;
+		padding-bottom: 40px;
+		font-size: 18px;
+		
+		.max660({ font-size: 14px; });
+	}
+		.new-word-button > div {
+			display: inline-block;
+
+			.max660({ display: block; });
+		}
+			.new-word-button__button {
+				display: inline-block;
+				padding: 10px 20px;
+				margin: 5px;
+				margin-bottom: 20px;
+				border: 1px solid #006600;
+				background-color: #00cc00;
+				border-radius: 5px;
+				color: #fff;
+				font-weight: bold;
+				text-decoration: none;
+				.box-shadow-light();
+			}
+			
+			.new-word-button__lookup {
+				display: inline-block;
+				padding: 10px 20px;
+				margin: 5px;
+				margin-bottom: 20px;
+				border: 1px solid #333;
+				background-color: #fff;
+				border-radius: 5px;
+				color: #111;
+				font-weight: normal;
+				width: 100px;
+				text-decoration: none;
+				.box-shadow-light();
+			}
+			
+			.new-word-button span {
+				display: inline-block;
+				font-size: 16px;
+				margin: 0 10px;
+				
+				.max660({ display: none; });
+			}
+
+	.other-list {
+		margin-top: 30px;
+		text-align: center;
+		font-size: 14px;
+	}
+		.other-list h3 {
+			font-weight: bold;
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+		
+		.other-list ul {
+			list-style: none;
+			margin-bottom: 40px;
+		}
+			.other-list ul li {
+				line-height: 150%;
+				display: block;
+			}
+	
+	
+	.about {
+		font-size: 14px;
+		margin-bottom: 70px;
+		text-align: center;
+		line-height: 150%;
+	}
+
+	
+	
+	
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+/* RESPONSIVE SPECIFIC */
+
+	// Smaller desktops / iPad landscape
+	.max660(@rules) {
+		@media only screen and (max-width: 660px) { @rules(); }
+	}
+	
+	.max359(@rules) {
+		@media only screen and (max-width: 359px) { @rules(); }
+	}
+	
+	/* USAGE, eg:
+	 *	
+	 *	header {
+	 *		background: #000;
+	 *		 
+	 *		.max1200({ background-color: #fff; });
+	 *		.max989({ background-color: #c00; });
+	 *	}
+	 *
+	 */
+	 
+	 // http://mqhelper.nokturnalapp.com/  - group media queries, this code WILL NOT - do this last, then recompress. 
+	 // See also: https://github.com/less/less.js/issues/950
+	 // Another 'inline' way, but not as neat: http://stackoverflow.com/questions/22507821/how-do-i-create-a-less-mixin-that-outputs-centralized-css-rules
+	
+
+
+// -----------------------------------------------------------------------------------------------------------------------------------------
+// -----------------------------------------------------------------------------------------------------------------------------------------
+/* RETINA SPECIFIC */
+
+	.retina(@rules) {
+		@media only screen and (-moz-min-device-pixel-ratio: 1.5),
+		       only screen and (-o-min-device-pixel-ratio: 3/2),
+		       only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		       only screen and (min-device-pixel-ratio: 1.5),
+		       only screen and (min-resolution: 192dpi) { @rules(); }
+	}
