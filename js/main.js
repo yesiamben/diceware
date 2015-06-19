@@ -3,12 +3,22 @@
 // -----------------------------------------------------------------------------------------------------------------------------------------
 /* DOCUMENT READY */
 
-	function getDiceRoll () {
-		
-		return Math.floor(Math.random() * 6) + 1;
-		
+	// Use a cryptographically strong random number generator
+	// to get the die roll results.
+	function getDiceRoll (numRolls) {
+		if (!numRolls) { numRolls = 5; }
+
+		var array = new Uint32Array(numRolls);
+		window.crypto.getRandomValues(array);
+
+		var rollResults = [];
+		for (var i = 0; i < array.length; i++) {
+			// Convert random Byte into 6 sided die roll
+			rollResults.push((array[i] % 6) + 1);
+		}
+		return rollResults.join('');
 	}
-	
+
 	function addBox (num, list) {
 	
 		if (list == 'diceware') {
@@ -40,26 +50,14 @@
 		$('.js__new-word-button').on('click', function (e) {
 		
 			e.preventDefault();
-			var num = '';
-			for (i=0; i<5; i++) {
-				
-				num += getDiceRoll();
-			}
-			
-			addBox (num, 'diceware');
-			
+			addBox (getDiceRoll(5), 'diceware');
+
 		});
 		
 		$('.js__new-special-button').on('click', function (e) {
 			
 			e.preventDefault();
-			var num = '';
-			for (i=0; i<2; i++) {
-				
-				num += getDiceRoll();
-			}
-			
-			addBox (num, 'special');
+			addBox (getDiceRoll(2), 'special');
 
 		});
 		
