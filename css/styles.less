@@ -1,10 +1,3 @@
-// .person {}       - person
-// .person__head {} - element of person
-// .person--tall {} - modifier of person
-
-
-// -----------------------------------------------------------------------------------------------------------------------------------------
-// -----------------------------------------------------------------------------------------------------------------------------------------
 /* LESS VARIABLES */
 
 
@@ -21,9 +14,9 @@
 
 	// Box Sizing
 	.boxSize {
-		-moz-box-sizing: border-box; 
-		-webkit-box-sizing: border-box; 
-		box-sizing: border-box; 
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
 	}
 
 	// Box Shadow
@@ -70,9 +63,9 @@
 // -----------------------------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------------------------
 /* RESETS */
-	
-	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, 
-	form, fieldset, input, p, blockquote, table, th, td, embed, 
+
+	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
+	form, fieldset, input, p, blockquote, table, th, td, embed,
 	object, menu, nav, aside, section, article {
 		padding: 0;
 		margin: 0;
@@ -87,9 +80,9 @@
 	a, fieldset, img, abbr {
 		border: 0;
 		border: none;
-		-webkit-tap-highlight-color: rgba(0,0,0,0); 
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
 	}
-	address, caption, cite, code, dfn, em, 
+	address, caption, cite, code, dfn, em,
 	h1, h2, h3, h4, h5, h6, strong, th, var {
 		font-weight: normal;
 		font-style: normal;
@@ -109,7 +102,7 @@
 	ins {
 		text-decoration: none;
 	}
-	
+
 	/* Clear */
 	.clear{
 		clear: both;
@@ -119,11 +112,11 @@
 		width: 0;
 		height: 0;
 	}
-	
+
 	b, strong, em {
 		font-weight: bold;
 	}
-	
+
 	input, textarea {
 		font-size: inherit;
 		font: inherit;
@@ -131,29 +124,28 @@
 	input:focus, a:focus, select, input, textarea, :focus {
 		outline: none;
 	}
-	
+
 	// Remove as necessary
 	html, body {
 		height: 100%;
 	}
-	
+
 	body {
 		font-size: 62.5%;
 		font-family: Arial, Helvetica, sans-serif;
-		font-family: 'Roboto', sans-serif;
 		height: 100%;
 		min-height: 100%;
 		color: #111;
 		background-color: #fff;
 	}
-	
+
 	::selection {
 		//background-color: #000;
 	}
 	::-moz-selection {
 		//background-color: #000;
 	}
-	
+
 	a {
 		color: #00f;
 	}
@@ -166,7 +158,7 @@
 /* LAYOUT */  // Section as best as possible.
 
 	// Generic
-	
+
 	.w900 {
 		display: block;
 		margin: 0 auto;
@@ -178,8 +170,8 @@
 			padding: 0 10px;
 			.boxSize;
 		}
-		
-	
+
+
 	.header {
 		padding-top: 30px;
 	}
@@ -189,7 +181,7 @@
 			font-weight: bold;
 			margin-bottom: 20px;
 		}
-		
+
 		.header__info {
 			text-align: center;
 			font-size: 16px;
@@ -199,8 +191,8 @@
 			.header__info-red {
 				color: #c00;
 			}
-	
-	
+
+
 	.new-diceword {
 		width: 100%;
 		text-align: center;
@@ -239,7 +231,7 @@
 				padding-top: 9px;
 				background-color: #f3f3f3;
 			}
-		
+
 	.list-title {
 		color: #999;
 		font-size: 14px;
@@ -248,13 +240,13 @@
 		margin-bottom: 20px;
 		margin-top: 30px;
 	}
-	
-	
+
+
 	.new-word-button {
 		text-align: center;
 		padding-bottom: 40px;
 		font-size: 18px;
-		
+
 		.max660({ font-size: 14px; });
 	}
 		.new-word-button > div {
@@ -275,7 +267,7 @@
 				text-decoration: none;
 				.box-shadow-light();
 			}
-			
+
 			.new-word-button__lookup {
 				display: inline-block;
 				padding: 10px 20px;
@@ -290,12 +282,12 @@
 				text-decoration: none;
 				.box-shadow-light();
 			}
-			
+
 			.new-word-button span {
 				display: inline-block;
 				font-size: 16px;
 				margin: 0 10px;
-				
+
 				.max660({ display: none; });
 			}
 
@@ -309,7 +301,7 @@
 			font-size: 18px;
 			margin-bottom: 10px;
 		}
-		
+
 		.other-list ul {
 			list-style: none;
 			margin-bottom: 40px;
@@ -318,8 +310,8 @@
 				line-height: 150%;
 				display: block;
 			}
-	
-	
+
+
 	.about {
 		font-size: 14px;
 		margin-bottom: 70px;
@@ -327,9 +319,9 @@
 		line-height: 150%;
 	}
 
-	
-	
-	
+
+
+
 
 // -----------------------------------------------------------------------------------------------------------------------------------------
 // -----------------------------------------------------------------------------------------------------------------------------------------
@@ -339,26 +331,26 @@
 	.max660(@rules) {
 		@media only screen and (max-width: 660px) { @rules(); }
 	}
-	
+
 	.max359(@rules) {
 		@media only screen and (max-width: 359px) { @rules(); }
 	}
-	
+
 	/* USAGE, eg:
-	 *	
+	 *
 	 *	header {
 	 *		background: #000;
-	 *		 
+	 *
 	 *		.max1200({ background-color: #fff; });
 	 *		.max989({ background-color: #c00; });
 	 *	}
 	 *
 	 */
-	 
-	 // http://mqhelper.nokturnalapp.com/  - group media queries, this code WILL NOT - do this last, then recompress. 
+
+	 // http://mqhelper.nokturnalapp.com/  - group media queries, this code WILL NOT - do this last, then recompress.
 	 // See also: https://github.com/less/less.js/issues/950
 	 // Another 'inline' way, but not as neat: http://stackoverflow.com/questions/22507821/how-do-i-create-a-less-mixin-that-outputs-centralized-css-rules
-	
+
 
 
 // -----------------------------------------------------------------------------------------------------------------------------------------
