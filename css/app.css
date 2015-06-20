@@ -1,0 +1,11 @@
+body {
+  padding-top: 50px;
+}
+
+#diceWords li {
+  font-size: 40px;
+}
+
+#diceWords li span {
+  font-size: 10px;
+}

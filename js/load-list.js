@@ -1,11 +1,8 @@
 // load appropriate diceware scripts based on URL params.
 
-var scriptToLoad, dicelist, wordlist;
+var scriptToLoad, dicelist;
 dicelist = getURLParameterOrDefault("dicelist");
 
-// Capitalize the wordlist string. Ugh, javascript.
-// http://forwebonly.com/capitalize-the-first-letter-of-a-string-in-javascript-the-fast-way/
-wordlist = dicelist.charAt(0).toUpperCase() + dicelist.substring(1);
 scriptToLoad = dicelist + "-min.js";
 
 // Dynamically load different diceware lists.

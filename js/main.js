@@ -1,35 +1,59 @@
 // Use a cryptographically strong random number generator
-// to get the die roll results.
-function getDiceRoll(numRolls) {
+// to get the die roll results. Returns an array of
+// objects of length numWords (default 1). Each object in
+// the array represents a word and its index and is the result of
+// numRollsPerWord die rolls (default 5).
+function getWords(numWords, numRollsPerWord) {
     'use strict';
 
-    var i, rollResults = [];
+    var i,
+        j,
+        words = [],
+        rollResults,
+        rollResultsJoined,
+        randomBytes;
 
-    if (!numRolls) {
-        numRolls = 5;
+    if (!numWords) { numWords = 1; }
+    if (!numRollsPerWord) { numRollsPerWord = 5; }
+
+    for (i = 0; i < numWords; i += 1) {
+        rollResults = [];
+        randomBytes = new Uint32Array(numRollsPerWord);
+        window.crypto.getRandomValues(randomBytes);
+
+        for (j = 0; j < randomBytes.length; j += 1) {
+            // Convert random Byte into 6 sided die roll
+            rollResults.push((randomBytes[j] % 6) + 1);
+        }
+
+        rollResultsJoined = rollResults.join('');
+        if (numRollsPerWord === 5) {
+            words.push({"word": diceware[rollResultsJoined], "wordNum": rollResultsJoined, "numRollsPerWord": numRollsPerWord});
+        } else if (numRollsPerWord === 2) {
+            words.push({"word": special[rollResultsJoined], "wordNum": rollResultsJoined, "numRollsPerWord": numRollsPerWord});
+        }
     }
 
-    var array = new Uint32Array(numRolls);
-    window.crypto.getRandomValues(array);
-
-    for (i = 0; i < array.length; i += 1) {
-        // Convert random Byte into 6 sided die roll
-        rollResults.push((array[i] % 6) + 1);
-    }
-
-    return rollResults.join('');
+    return words;
 }
 
-function addBox(num, list) {
-    'use strict';
-    var word;
-
-    if (list === 'diceware') {
-        word = diceware[num];
-    } else if (list === 'special') {
-        word = special[num];
+// Lookup a word by its wordNum and return
+// an Array with a single word object suitable for displayWords.
+function getWordFromWordNum(wordNum) {
+    if (wordNum.length === 5) {
+        return [{"word": diceware[wordNum], "wordNum": wordNum}];
+    } else if (wordNum.length === 2) {
+        return [{"word": special[wordNum], "wordNum": wordNum}];
     }
-    $('.new-diceword').append('<div class="new-diceword__box js__diceword-box"><div class="new-diceword__box-top">' + word + '</div><div class="new-diceword__box-bottom">' + num + '</div></div>');
+}
+
+// Takes an array of word objects and display them on the page.
+function displayWords(words) {
+    'use strict';
+
+    $.each(words, function( index, obj ) {
+        $('#diceWords').append('<li>' + obj.word + '<span class="text-muted">' + obj.wordNum + '</span></li>');
+    });
 }
 
 // Extract a named query string param from the current window.location
@@ -45,64 +69,64 @@ function getURLParameterOrDefault(name) {
 $(document).ready(function () {
     'use strict';
 
-    $('.js__new-word-button').on('click', function (e) {
+    $('#buttonAddFourWords').on('click', function (e) {
         e.preventDefault();
-        addBox(getDiceRoll(5), 'diceware');
+        $('#diceWords').html('');
+        displayWords(getWords(4, 5));
     });
 
-    $('.js__new-special-button').on('click', function (e) {
+    $('#buttonAddFiveWords').on('click', function (e) {
         e.preventDefault();
-        addBox(getDiceRoll(2), 'special');
+        $('#diceWords').html('');
+        displayWords(getWords(5, 5));
     });
 
-    $('.js__new-lookup-input').keydown(function (event) {
-        if (event.keyCode === 13) {
-            $('.js__new-lookup-button').trigger('click');
-        }
-    });
-
-    $('.js__new-lookup-button').on('click', function (e) {
-        var buttonVal,
-            proceed,
-            i;
-
+    $('#buttonAddSixWords').on('click', function (e) {
         e.preventDefault();
-        buttonVal = $('.js__new-lookup-input').val();
-
-        if ((buttonVal).length !== 5 && (buttonVal).length !== 2) {
-            $('.js__new-lookup-input').css('border-color', '#c00');
-        } else {
-            proceed = true;
-            for (i = 0; i < (buttonVal).length; i += 1) {
-                if ((buttonVal).charAt(i) < 1 || (buttonVal).charAt(i) > 6) {
-                    $('.js__new-lookup-input').css('border-color', '#c00');
-                    proceed = false;
-                }
-            }
-
-            if (proceed === true) {
-                if ((buttonVal).length === 2) {
-                    addBox(buttonVal, 'special');
-                    $('.js__new-lookup-input').val('');
-                } else {
-                    addBox(buttonVal, 'diceware');
-                    $('.js__new-lookup-input').val('');
-                }
-            }
-        }
+        $('#diceWords').html('');
+        displayWords(getWords(6, 5));
     });
 
-    $('.js__new-lookup-input').on('keyup', function () {
-        $(this).css('border-color', '#333');
-    });
-
-    $('.new-diceword').on('click', '.js__diceword-box', function (e) {
+    $('#buttonAddSevenWords').on('click', function (e) {
         e.preventDefault();
-        $(this).fadeOut('fast', function () {
-            $(this).remove();
-        });
+        $('#diceWords').html('');
+        displayWords(getWords(7, 5));
     });
 
-    $('.list-title span').text(wordlist);
+    $('#buttonAddEightWords').on('click', function (e) {
+        e.preventDefault();
+        $('#diceWords').html('');
+        displayWords(getWords(8, 5));
+    });
+
+    // single word button
+    $('#buttonAddWord').on('click', function (e) {
+        e.preventDefault();
+        displayWords(getWords(1, 5));
+    });
+
+    // single symbol button
+    $('#buttonAddSymbol').on('click', function (e) {
+        e.preventDefault();
+        // two die roll
+        displayWords(getWords(1, 2));
+    });
+
+    $('#addFiveDieRollWordButton').on('click', function (e) {
+        var addFiveDieRollWord;
+        e.preventDefault();
+        addFiveDieRollWord = $('#addFiveDieRollWord').val();
+        displayWords(getWordFromWordNum(addFiveDieRollWord));
+        $('#addFiveDieRollWord').val('');
+    });
+
+    // $('#diceWords').on('click', '.js__diceword-box', function (e) {
+    //     e.preventDefault();
+    //     $(this).fadeOut('fast', function () {
+    //         $(this).remove();
+    //     });
+    // });
+
+    $('#listTitleHeader span').text(dicelist);
 
 });

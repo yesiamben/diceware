@@ -2,89 +2,103 @@
 <html lang="en">
 
   <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="An easy way to look up a Diceware passphase.">
-
+    <link rel="shortcut icon" href="favicon.ico">
     <title>Diceware Passphrase Lookup and Generator</title>
+    <link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/app.css" type="text/css">
+  </head>
 
-    <link rel="shortcut icon" href="favicon.ico" />
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Diceware</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="?dicelist=diceware">English</a></li>
+            <li><a href="?dicelist=alternative">English (Alternative)</a></li>
+            <li><a href="?dicelist=catalan">Catalan</a></li>
+            <li><a href="?dicelist=dutch">Dutch</a></li>
+            <li><a href="?dicelist=esperanto">Esperanto</a></li>
+            <li><a href="?dicelist=german">German</a></li>
+            <li><a href="?dicelist=japanese">Japanese</a></li>
+            <li><a href="?dicelist=polish">Polish</a></li>
+            <li><a href="?dicelist=swedish">Swedish</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 id="listTitleHeader" class="text-capitalize"><span></span>&nbsp;<small>wordlist</small></h1>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Add random words group">
+        <button id="buttonAddFourWords" type="button" class="btn btn-warning">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 4 Words
+        </button>
+        <button id="buttonAddFiveWords" type="button" class="btn btn-warning">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 5 Words
+        </button>
+        <button id="buttonAddSixWords" type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 6 Words
+        </button>
+        <button id="buttonAddSevenWords" type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 7 Words
+        </button>
+        <button id="buttonAddEightWords" type="button" class="btn btn-success">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 8 Words
+        </button>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Add single word or symbol group">
+        <button id="buttonAddWord" type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Word
+        </button>
+        <button id="buttonAddSymbol" type="button" class="btn btn-default">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Symbol
+        </button>
+      </div>
+
+      <br />
+      <br />
+
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="sr-only" for="addFiveDieRollWord">Five Die Roll</label>
+          <div class="input-group">
+            <div class="input-group-addon">#</div>
+            <input type="text" class="form-control" id="addFiveDieRollWord" placeholder="Five die roll" type="number" maxlength="5">
+          </div>
+        </div>
+        <button id="addFiveDieRollWordButton" type="submit" class="btn btn-default">Add word</button>
+      </form>
+
+      <br />
+      <br />
+
+      <ul id="diceWords" class="list-inline"></ul>
+
+    </div><!-- /.container -->
 
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/load-list.js"></script>
     <script src="js/lists/special-min.js"></script>
-  </head>
-
-  <body>
-
-    <div class="w900">
-
-      <div class="w100pc">
-
-        <div class="header">
-          <h1 class="header__title">Diceware Passphrase Lookup and Generator</h1>
-          <p class="header__info">
-            This generator makes passphrases using the <a href="http://world.std.com/~reinhold/diceware.html">Diceware</a> <a href="http://world.std.com/~reinhold/diceware.wordlist.asc">wordlist</a> by Arnold G. Reinhold, following instructions that can
-            be found <a href="http://world.std.com/~reinhold/diceware.html">here</a>. It was inspired by <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/">this</a> article. You should trust the generator
-            only as much as you trust your browser to generate a <a href="https://www.google.co.uk/#q=how+random+is+math.random">random number</a>, as this is used to emulate a dice roll. The Diceware FAQ <a href="http://world.std.com/~reinhold/dicewarefaq.html#electronic">
-            explicitly says</a>
-            <span class="header__info-red">not to use an electronic version</span> (so again,
-            <span class="header__info-red">use the generator with caution</span>). To get it really random, use a dice yourself to roll 5 numbers then look them up. </p>
-          <p class="header__info">
-            Very simply, each click of '<b>New Word</b>' will generate 5 numbers between 1 and 6 and combine them into one 5 digit number. Each number (between 11111 and 66666) is associated with a word on the Diceware list. You should generate a minimum
-            of <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong">6 new words</a>. For extra security use the '<b>New Special</b>' button to generate a <a href="http://world.std.com/~reinhold/dicewarefaq.html#specialchars">special character</a>            (based on 2 rolls) at some point in your passphrase. Any lookups must be 2 or 5 characters long and consist of numbers between 1 and 6. You can click any word to remove it from the displayed passphrase.
-          </p>
-        </div>
-
-        <h2 class="list-title">Word list:
-          <span></span>
-        </h2>
-
-        <div class="new-diceword"></div>
-
-        <div class="new-word-button">
-          <div>
-            <a href="#" class="new-word-button__button js__new-word-button">New Word</a>
-            <a href="#" class="new-word-button__button js__new-special-button">New Special</a>
-          </div>
-
-          <div>
-            <span>Or</span>
-            <input class="new-word-button__lookup js__new-lookup-input" type="number" maxlength="5">
-            <a href="#" class="new-word-button__button js__new-lookup-button">New Lookup</a>
-          </div>
-        </div>
-
-        <div class="other-list">
-          <h3>Choose a word list:</h3>
-          <ul>
-            <li><a href="?dicelist=diceware">Standard Diceware</a></li>
-            <li><a href="?dicelist=alternative">Alternative</a> by Alan Beale</li>
-            <li><a href="?dicelist=catalan">Catalan</a> by <a href="https://github.com/Jautenim/diceware-cat">Marcel Hernandez</a></li>
-            <li><a href="?dicelist=dutch">Dutch</a> by Bart Van den Eynde under GNU</li>
-            <li><a href="?dicelist=esperanto">Esperanto</a> by Makis Diras</li>
-            <li><a href="?dicelist=german">German</a> by Benjamin Tenne under GNU</li>
-            <li><a href="?dicelist=japanese">Japanese</a> by Hiroshi Yuki and J Greely</li>
-            <li><a href="?dicelist=polish">Polish</a> by Piotr (DrFugazi) Tarnowski</li>
-            <li><a href="?dicelist=swedish">Swedish</a> by Magnus Bodin</li>
-            <li>Your list? Drop me a message on <a href="http://twitter.com/yesiamben">Twitter</a></li>
-          </ul>
-        </div>
-
-        <p class="about">
-          <b>Loving put together by <a href="http://twitter.com/yesiamben">Ben</a>.</b>
-          <br /> All the source for this project is available on <a href="https://github.com/yesiamben/diceware">GitHub</a>.
-          <br /> Diceware is a trademark of <a href="http://world.std.com/~reinhold/">A G Reinhold</a>. The Diceware wordlist is used under the <a href="http://creativecommons.org/licenses/by/3.0/">Creative Commons CC-BY 3.0 license</a> - thank you!
-        </p>
-
-        <div class="clear"></div>
-
-      </div>
-
-    </div>
 
   </body>
 
