@@ -19,12 +19,7 @@
 
     <script>
       var scriptToLoad, dicelist, wordlist;
-
-      dicelist = getUrlVars()["dicelist"];
-
-      if (!dicelist) {
-        dicelist = "diceware";
-      }
+      dicelist = getURLParameterOrDefault("dicelist");
 
       // Capitalize the wordlist string. Ugh, javascript.
       // http://forwebonly.com/capitalize-the-first-letter-of-a-string-in-javascript-the-fast-way/

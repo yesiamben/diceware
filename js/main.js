@@ -32,23 +32,14 @@ function addBox(num, list) {
     $('.new-diceword').append('<div class="new-diceword__box js__diceword-box"><div class="new-diceword__box-top">' + word + '</div><div class="new-diceword__box-bottom">' + num + '</div></div>');
 }
 
-// Ta!
-// http://www.drupalden.co.uk/get-values-from-url-query-string-jquery
-function getUrlVars() {
-    'use strict';
+// Extract a named query string param from the current window.location
+function getURLParameterOrDefault(name) {
+    param = (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [null,null])[1];
 
-    var i,
-        vars = [],
-        hash,
-        hashes;
-
-    hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-    for (i = 0; i < hashes.length; i += 1) {
-        hash = hashes[i].split('=');
-        vars.push(hash[0]);
-        vars[hash[0]] = hash[1];
+    if (param === null) {
+        return "diceware";
     }
-    return vars;
+    return decodeURI(param);
 }
 
 $(document).ready(function () {
