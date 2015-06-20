@@ -93,9 +93,21 @@
 
       <ul id="diceWords" class="list-inline"></ul>
 
+      <div id="zxcvbnResultsContainer" class="well well-sm">
+        <span class="label label-default">ZXCVBN</span><br />
+        <span id="zxcvbnResults"></span>
+        <a href='https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/' target='_blank'>Learn more...</a>
+      </div>
+
+      <div id="diceWordsCopyableContainer" class="well well-sm">
+        <span class="label label-default">copyable text</span><br />
+        <samp id="diceWordsCopyable"></samp>
+      </div>
+
     </div><!-- /.container -->
 
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/zxcvbn-async.js"></script>
     <script src="js/main.js"></script>
     <script src="js/load-list.js"></script>
     <script src="js/lists/special-min.js"></script>

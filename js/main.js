@@ -51,9 +51,24 @@ function getWordFromWordNum(wordNum) {
 function displayWords(words) {
     'use strict';
 
+    // add the word to the global array of words
+    $.each(words, function( index, obj ) {
+        wordList.push(obj.word);
+    });
+
+    // add the word to the main display
     $.each(words, function( index, obj ) {
         $('#diceWords').append('<li>' + obj.word + '<span class="text-muted">' + obj.wordNum + '</span></li>');
     });
+
+    // Display the ZXCVBN results
+    var wordListJoined = wordList.join(' ');
+    var zxcvbnResult = zxcvbn(wordListJoined);
+    $("#diceWordsCopyable").text(wordListJoined);
+    $("#diceWordsCopyableContainer").slideDown();
+    $("#zxcvbnResults").html("estimates " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
+    $("#zxcvbnResultsContainer").slideDown();
+
 }
 
 // Extract a named query string param from the current window.location
@@ -66,52 +81,70 @@ function getURLParameterOrDefault(name) {
     return decodeURI(param);
 }
 
+function resetUI() {
+    wordList = [];
+    $('#diceWords').html('');
+    $("#diceWordsCopyable").text('');
+    $("#diceWordsCopyableContainer").hide();
+    $("#zxcvbnResults").html("");
+    $("#zxcvbnResultsContainer").hide();
+}
+
 $(document).ready(function () {
     'use strict';
 
+    var wordList = []; // a global
+    resetUI();
+
     $('#buttonAddFourWords').on('click', function (e) {
         e.preventDefault();
-        $('#diceWords').html('');
+        resetUI();
         displayWords(getWords(4, 5));
     });
 
     $('#buttonAddFiveWords').on('click', function (e) {
         e.preventDefault();
-        $('#diceWords').html('');
+        resetUI();
         displayWords(getWords(5, 5));
     });
 
     $('#buttonAddSixWords').on('click', function (e) {
         e.preventDefault();
-        $('#diceWords').html('');
+        resetUI();
         displayWords(getWords(6, 5));
     });
 
     $('#buttonAddSevenWords').on('click', function (e) {
         e.preventDefault();
-        $('#diceWords').html('');
+        resetUI();
         displayWords(getWords(7, 5));
     });
 
     $('#buttonAddEightWords').on('click', function (e) {
         e.preventDefault();
-        $('#diceWords').html('');
+        resetUI();
         displayWords(getWords(8, 5));
     });
 
     // single word button
+    // does not reset UI. Adds onto existing wordList
     $('#buttonAddWord').on('click', function (e) {
         e.preventDefault();
         displayWords(getWords(1, 5));
     });
 
     // single symbol button
+    // does not reset UI. Adds onto existing wordList
     $('#buttonAddSymbol').on('click', function (e) {
         e.preventDefault();
         // two die roll
         displayWords(getWords(1, 2));
     });
 
+    // add a word from the output from analog die rolls e.g. 14352
+    // can be either a five die roll for a full word, or a two die
+    // roll for a symbol.
+    // does not reset UI. Adds onto existing wordList
     $('#addFiveDieRollWordButton').on('click', function (e) {
         var addFiveDieRollWord;
         e.preventDefault();
@@ -119,13 +152,6 @@ $(document).ready(function () {
         displayWords(getWordFromWordNum(addFiveDieRollWord));
         $('#addFiveDieRollWord').val('');
     });
-
-    // $('#diceWords').on('click', '.js__diceword-box', function (e) {
-    //     e.preventDefault();
-    //     $(this).fadeOut('fast', function () {
-    //         $(this).remove();
-    //     });
-    // });
 
     $('#listTitleHeader span').text(dicelist);
 
