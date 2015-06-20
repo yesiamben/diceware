@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="An easy way to look up a Diceware passphase.">
     <link rel="shortcut icon" href="favicon.ico">
-    <title>Diceware Passphrase Lookup and Generator</title>
+    <title>Diceware Secure Passphrase Generator</title>
     <link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/app.css" type="text/css">
   </head>
@@ -149,6 +149,15 @@
         </div>
         <div class="panel-body">
           We use the JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with your browser to get random bytes which we convert to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a> and make your own determination. Many cryptographic library authors are now targeting the browser and using this API as their primary source of entropy.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What URL should I be using to access this application?</h3>
+        </div>
+        <div class="panel-body">
+          The canonical site for this version is currently hosted by Github using Github pages with a TLS certificate. You can find it at <a href="https://grempe.github.io/diceware/">https://grempe.github.io/diceware/</a>. The original version by Ben Pritchard (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) is still online at <a href="http://www.diceware.net/" target="_blank">http://www.diceware.net/</a>. It does not (yet?) incorporate the significant security and UI changes I have made, nor is it served over an HTTPS connection. So I recommend using my forked version until that changes.
         </div>
       </div>
 
