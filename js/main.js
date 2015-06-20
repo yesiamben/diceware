@@ -145,11 +145,13 @@ $(document).ready(function () {
     // can be either a five die roll for a full word, or a two die
     // roll for a symbol.
     // does not reset UI. Adds onto existing wordList
-    $('#addFiveDieRollWordButton').on('click', function (e) {
+    $('#addFiveDieRollWordForm').on('submit', function (e) {
         var addFiveDieRollWord;
         e.preventDefault();
         addFiveDieRollWord = $('#addFiveDieRollWord').val();
-        displayWords(getWordFromWordNum(addFiveDieRollWord));
+        if ((addFiveDieRollWord.match(/^[1-6]{2}$/) || addFiveDieRollWord.match(/^[1-6]{5}$/)) && (addFiveDieRollWord.length === 2 || addFiveDieRollWord.length === 5)) {
+            displayWords(getWordFromWordNum(addFiveDieRollWord));
+        }
         $('#addFiveDieRollWord').val('');
     });
 
