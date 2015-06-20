@@ -66,7 +66,7 @@ function displayWords(words) {
     var zxcvbnResult = zxcvbn(wordListJoined);
     $("#diceWordsCopyable").text(wordListJoined);
     $("#diceWordsCopyableContainer").slideDown();
-    $("#zxcvbnResults").html("estimates " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
+    $("#zxcvbnResults").html("estimates this passphrase contains " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
     $("#zxcvbnResultsContainer").slideDown();
 
 }

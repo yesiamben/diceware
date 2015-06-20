@@ -45,6 +45,15 @@
 
       <div class="page-header">
         <h1 id="listTitleHeader" class="text-capitalize"><span></span>&nbsp;<small>wordlist</small></h1>
+        <p class="lead">
+          This application generates cryptographically strong passphrases using
+          the <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a>
+          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>
+          and was inspired by <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank">this article</a> by Micah Lee.
+
+          You should use a minimum of <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a> to be safe.
+          Just click one of the buttons below to get started...
+        </p>
       </div>
 
       <div class="btn-group" role="group" aria-label="Add random words group">
@@ -93,15 +102,112 @@
 
       <ul id="diceWords" class="list-inline"></ul>
 
+      <br />
+      <br />
+
       <div id="zxcvbnResultsContainer" class="well well-sm">
-        <span class="label label-default">ZXCVBN</span><br />
+        <span class="label label-default">ZXCVBN</span><br /><br />
         <span id="zxcvbnResults"></span>
         <a href='https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/' target='_blank'>Learn more...</a>
       </div>
 
       <div id="diceWordsCopyableContainer" class="well well-sm">
-        <span class="label label-default">copyable text</span><br />
-        <samp id="diceWordsCopyable"></samp>
+        <span class="label label-default">copyable text</span><br /><br />
+        <code id="diceWordsCopyable"></code>
+      </div>
+
+      <hr />
+
+      <h3 class="text-muted">Frequently Asked Questions</h3>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">How do I use it?</h3>
+        </div>
+        <div class="panel-body">
+          <p>It's really simple. Just click on one of the random passphrase generator buttons above. This will allow you to generate passphrases that are 4,5,6,7, or 8 words long. Clicking any of these again will generate a totally new passphrase and your will <strong>never</strong> see the previous one again.</p>
+          <p>At any time you can click on the <code>+ Word</code> or <code>+ Symbol</code> buttons to add them to the existing passphrase.</p>
+          <p>Lastly, you can manually roll real dice (two or five dice rolls for each symbol or word) and enter the results of each set of rolls in the form and hit the return/enter key to add that word to your passphrase.</p>
+          <p>Each word or symbol displayed will also be shown with its index number that was used to look it up in the diceware word list in small text.</p>
+          <p>You can copy the generated passphrase from the copyable string on the page. You should store it somewhere safe and secure. You might want to write it down and refer to the written version until you can remember it which shouldn't take long.</p>
+          <p>Reload or close the browser tab once you are done so others can't discover your passphrase.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Is it safe?</h3>
+        </div>
+        <div class="panel-body">
+          It depends. Are you the target of a nation-state level adversary? If so, you should probably not use this and should instead use Diceware to roll real physical dice and look up the words from the wordlist manually. This is the official recommendation of the <a href="http://world.std.com/~reinhold/dicewarefaq.html#electronic" target="_blank">Diceware FAQ</a>. As a normal person, even if you have high security needs like protecting long term cryptographic keys, you should be safe using this tool. Using real dice is the most secure way, but relying on the random number generator should be safe as well.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Does this use a Cryptographically Secure Pseudo Random Number Generator (CSPRNG)?</h3>
+        </div>
+        <div class="panel-body">
+          We use the JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with your browser to get random bytes which we convert to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a> and make your own determination. Many cryptographic library authors are now targeting the browser and using this API as their primary source of entropy.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Does this application send any data to the server?</h3>
+        </div>
+        <div class="panel-body">
+          <strong>No!</strong> Once the initial page is loaded everything is done locally in your browser. None of the generated password information is sent anywhere. In fact, once you load this application in your browser you can turn off your network connection and it should work just fine.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">How should I use this most safely?</h3>
+        </div>
+        <div class="panel-body">
+          <p>You should ensure that:</p>
+          <ul>
+            <li>You <a href="http://world.std.com/~reinhold/diceware.html">read about Diceware</a> and understand the strengths and limitations of this approach.</li>
+            <li>Don't generate passphrases on a machine you don't own and control. No public machines!</li>
+            <li>Make sure no-one else is in the room and you are not being video recorded.</li>
+            <li>Ensure you close the browser tab, or reload it, when you are done.</li>
+            <li>You always visit this site over an HTTPS connection. A plain HTTP connection opens you up to trivial manipulation of the code or the wordlists by an attacker.</li>
+            <li>You verify that the TLS certificate is valid.</li>
+            <li>You are using the <a href="http://www.whatismybrowser.com/" target="_blank">latest version of a modern browser</a>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Is the source code available and can I run my own copy locally?</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>Yes!</strong> The source code is <a href="https://github.com/grempe/diceware" target="_blank">available on Github</a>. Its a simple static HTML application and you can download it and run it in any local webserver. On systems with Python installed you can just run <code>python -m SimpleHTTPServer 8888</code>.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Would XKCD approve?</h3>
+        </div>
+        <div class="panel-body">
+          <p>Yes, <a href="https://xkcd.com/936/" target="_blank">I believe so</a>.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Who created this?</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+          <li>Arnold G. Reinhold created Diceware. You can <a href="http://world.std.com/~reinhold/" target="_blank">find him online here</a>.</li>
+          <li><a href="http://www.iamben.co.uk/" target="_blank">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) created the first version of this application.</li>
+          <li><a href="https://www.rempe.us/" target="_blank">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank">@grempe</a>) was inspired by Ben's idea, modernized the code, enhanced security, and created a new user interface.</li>
+          </ul>
+        </div>
       </div>
 
     </div><!-- /.container -->
