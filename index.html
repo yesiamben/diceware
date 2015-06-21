@@ -46,14 +46,15 @@
       <div class="page-header">
         <h1 id="listTitleHeader" class="text-capitalize"><span></span>&nbsp;<small>wordlist</small></h1>
         <p class="lead">
-          This application generates cryptographically strong passphrases using
-          the <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a>
-          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>.
-          Using this tool you can create passwords that you can remember, but are likely all but uncrackable
-          even in the face of Nation-State level adversaries.
+          <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a> is used
+          to create cryptographically strong passphrases. It is based on the principle that the truly
+          random selection, based on rolls of dice, of words in a
+          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>
+          can result in easily memorable passwords that are also extremely resistant to attack by even
+          the most powerful adversaries.
 
-          You should use a minimum of <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a> to be safe.
-          Just click one of the buttons below to get started...
+          Passwords that are <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a> or longer
+          are thought to be safe for high security applications.
         </p>
       </div>
 
@@ -73,9 +74,6 @@
         <button id="buttonAddEightWords" type="button" class="btn btn-success">
           <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 8 Words
         </button>
-      </div>
-
-      <div class="btn-group" role="group" aria-label="Add single word or symbol group">
         <button id="buttonAddWord" type="button" class="btn btn-default">
           <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Word
         </button>
@@ -155,10 +153,10 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">Does this use a Cryptographically Secure Pseudo Random Number Generator (CSPRNG)?</h3>
+          <h3 class="panel-title">Does this use a cryptographically strong random number generator to choose the words?</h3>
         </div>
         <div class="panel-body">
-          We use the JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with your browser to get random bytes which we convert to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about the <a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a> and make your own determination. Many cryptographic library authors are now targeting the browser and using this API as their primary source of entropy.
+          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. The Bytes output from the RNG are converted to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a></code> and make your own determination. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy.
         </div>
       </div>
 
@@ -167,7 +165,7 @@
           <h3 class="panel-title">What URL should I be using to access this application?</h3>
         </div>
         <div class="panel-body">
-          The canonical site for this version is currently hosted by Github using Github pages with a TLS certificate. You can find it at <a href="https://grempe.github.io/diceware/">https://grempe.github.io/diceware/</a>. The original version by Ben Pritchard (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) is still online at <a href="http://www.diceware.net/" target="_blank">http://www.diceware.net/</a>. It does not (yet?) incorporate the significant security and UI changes I have made, nor is it served over an HTTPS connection. So I recommend using my forked version until that changes.
+          The canonical site for this version is currently hosted by Github using Github pages with a TLS certificate. You can find it at <a href="https://grempe.github.io/diceware/">https://grempe.github.io/diceware/</a>. The original version by Ben Pritchard (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) is still online at <a href="http://www.diceware.net/" target="_blank">http://www.diceware.net/</a>. It does not (yet?) incorporate the security and UI changes I have made, nor is it served over an HTTPS connection. So I recommend using this version until that changes. From a security standpoint the major difference is the elimination of <code>Math.random()</code> as the source of random numbers which is not secure. Additionally this page's JavaScript and CSS files are totally self-contained and the site itself is served over a known good TLS connection which helps prevent MITM attacks on the code or the wordlists.
         </div>
       </div>
 
