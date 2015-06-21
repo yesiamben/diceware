@@ -48,8 +48,9 @@
         <p class="lead">
           This application generates cryptographically strong passphrases using
           the <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a>
-          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>
-          and was inspired by <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank">this article</a> by Micah Lee.
+          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>.
+          Using this tool you can create passwords that you can remember, but are likely all but uncrackable
+          even in the face of Nation-State level adversaries.
 
           You should use a minimum of <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a> to be safe.
           Just click one of the buttons below to get started...
@@ -106,7 +107,7 @@
       <br />
 
       <div id="zxcvbnResultsContainer" class="well well-sm">
-        <span class="label label-default">ZXCVBN</span><br /><br />
+        <span class="label label-default">zxcvbn</span><br /><br />
         <span id="zxcvbnResults"></span>
         <a href='https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/' target='_blank'>Learn more...</a>
       </div>
@@ -131,6 +132,15 @@
           <p>Each word or symbol displayed will also be shown with its index number that was used to look it up in the diceware word list in small text.</p>
           <p>You can copy the generated passphrase from the copyable string on the page. You should store it somewhere safe and secure. You might want to write it down and refer to the written version until you can remember it which shouldn't take long.</p>
           <p>Reload or close the browser tab once you are done so others can't discover your passphrase.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What inspired you to create this?</h3>
+        </div>
+        <div class="panel-body">
+          I have been using Diceware for several years but its kind of a hassle for everyday passphrases. I wanted something that was easy to use, and yet secure for all but the most extreme security needs. Micah Lee's excellent overview in his article entitled <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank">Passphrases That You Can Memorize — But That Even The NSA Can't Guess</a> is a great read on the topic. For me, this is about 'scratching my own itch' and using a tool I know I can trust.
         </div>
       </div>
 
@@ -172,6 +182,15 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
+          <h3 class="panel-title">Where is the code for this application being served from?</h3>
+        </div>
+        <div class="panel-body">
+          The entire application is just HTML, JavaScript and CSS. There is no server side component and no database. All of the JavaScript and other assets are versioned in the repository and no code is served from outside of the repository. Tools like Jquery, Bootstrap, and zxcvbn are not served from a Content Delivery Network (CDN), which would enhance performance but decrease the security of the application.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
           <h3 class="panel-title">How should I use this most safely?</h3>
         </div>
         <div class="panel-body">
@@ -185,6 +204,20 @@
             <li>You verify that the TLS certificate is valid.</li>
             <li>You are using the <a href="http://www.whatismybrowser.com/" target="_blank">latest version of a modern browser</a>.</li>
           </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What is zxcvbn, entropy, and crack time?</h3>
+        </div>
+        <div class="panel-body">
+          <p><a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/" target="_blank">zxcvbn</a> is an open-source tool created by Dropbox which aims to provide 'realistic password strength estimation'. This is notoriously difficult but zxcvbn seems to do the best job out there. Its estimations allow you to more realistically understand the strength of, and the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)" target="_blank">entropy</a> of, a password. It provides an entropy estimate, a score, and an estimated time in seconds, and a timespan in words, of how long it might take a theoretical set of machines with 100+ cores to attack your password. For example, the first seven word password I just generated <code>800 circe swain sz meyers yore into</code> calculates to 117 bits of entropy. The broad estimated crack time is 'centuries'. What does that really mean though? A look at the seconds to crack provides some insight. In this example it is <code>1.0850375720066328e+31 seconds</code>. Lets <a href="http://www.wolframalpha.com/input/?i=1.0850375720066328e%2B31+seconds+in+years" target="_blank">ask Wolfram Alpha</a> to put that in terms that might be slightly more (in)comprehensible.</p>
+          <blockquote>
+          <samp>3.440631570289932×10^23 years</samp>
+          <br/>
+          <samp>~~ 2.5×10^13 × universe age (~~ 14 Gyr )</samp>
+          </blockquote>
         </div>
       </div>
 
@@ -213,8 +246,8 @@
         <div class="panel-body">
           <ul>
           <li>Arnold G. Reinhold created Diceware. You can <a href="http://world.std.com/~reinhold/" target="_blank">find him online here</a>.</li>
-          <li><a href="http://www.iamben.co.uk/" target="_blank">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) created the first version of this application.</li>
-          <li><a href="https://www.rempe.us/" target="_blank">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank">@grempe</a>) was inspired by Ben's idea, modernized the code, enhanced security, and created a new user interface.</li>
+          <li><a href="http://www.iamben.co.uk/" target="_blank">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) created the first version of this application and did a really nice job of it.</li>
+          <li><a href="https://www.rempe.us/" target="_blank">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank">@grempe</a>) was inspired by Ben's idea, forked the repository, and enhanced security, modernized and re-factored the code, and created a new user interface.</li>
           </ul>
         </div>
       </div>
