@@ -62,9 +62,15 @@ function displayWords(words) {
     });
 
     // Display the ZXCVBN results
-    var wordListJoined = wordList.join(' ');
-    var zxcvbnResult = zxcvbn(wordListJoined);
-    $("#diceWordsCopyable").text(wordListJoined);
+    var wordListJoinedSpace = wordList.join(' ');
+    var wordListJoinedDash = wordList.join('-');
+    var wordListJoinedNoGap = wordList.join('');
+
+    var zxcvbnResult = zxcvbn(wordListJoinedSpace);
+    $("#diceWordsCopyableSpace").text(wordListJoinedSpace);
+    $("#diceWordsCopyableDash").text(wordListJoinedDash);
+    $("#diceWordsCopyableNoGap").text(wordListJoinedNoGap);
+
     $("#diceWordsCopyableContainer").slideDown();
     $("#zxcvbnResults").html("estimates this passphrase contains " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
     $("#zxcvbnResultsContainer").slideDown();

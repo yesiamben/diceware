@@ -87,10 +87,10 @@
 
       <form id="addFiveDieRollWordForm" class="form-inline" data-toggle="validator">
         <div class="form-group">
-          <label class="sr-only" for="addFiveDieRollWord">Five Die Roll</label>
+          <label class="sr-only" for="addFiveDieRollWord">Add Two or Five Die Roll</label>
           <div class="input-group">
             <div class="input-group-addon">#</div>
-            <input type="text" class="form-control" id="addFiveDieRollWord" placeholder="2 or 5 die rolls" maxlength="5" pattern="^[1-6]{2,5}$">
+            <input type="text" class="form-control" id="addFiveDieRollWord" placeholder="+ 2 or 5 die roll word" maxlength="5" pattern="^[1-6]{2,5}$">
           </div>
           <span class="help-block with-errors"></span>
         </div>
@@ -111,8 +111,10 @@
       </div>
 
       <div id="diceWordsCopyableContainer" class="well well-sm">
-        <span class="label label-default">copyable text</span><br /><br />
-        <code id="diceWordsCopyable"></code>
+        <span class="label label-default">copyable text variations</span><br /><br />
+        <code id="diceWordsCopyableSpace"></code><br />
+        <code id="diceWordsCopyableDash"></code><br />
+        <code id="diceWordsCopyableNoGap"></code>
       </div>
 
       <hr />
