@@ -1,7 +1,7 @@
 // Global
 // which list will be used to lookup words.
 // standard diceware wordlist by default.
-var currentList = getURLParameterOrDefault("dicelist");
+var currentList = "diceware";
 
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
@@ -107,16 +107,6 @@ function displayWords(words) {
     $("#zxcvbnResults").html("estimates this passphrase contains " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
     $("#zxcvbnResultsContainer").slideDown();
 
-}
-
-// Extract a named query string param from the current window.location
-function getURLParameterOrDefault(name) {
-    param = (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [null,null])[1];
-
-    if (param === null) {
-        return "diceware";
-    }
-    return decodeURI(param);
 }
 
 function resetUI() {
