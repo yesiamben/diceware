@@ -1,4 +1,4 @@
-var diceware = {
+var alternative = {
 11111:"a",
 11112:"a's",
 11113:"a-1",

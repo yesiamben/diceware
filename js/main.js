@@ -1,3 +1,8 @@
+// Global
+// which list will be used to lookup words.
+// standard diceware wordlist by default.
+var currentList = getURLParameterOrDefault("dicelist");
+
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
 // objects of length numWords (default 1). Each object in
@@ -27,11 +32,7 @@ function getWords(numWords, numRollsPerWord) {
         }
 
         rollResultsJoined = rollResults.join('');
-        if (numRollsPerWord === 5) {
-            words.push({"word": diceware[rollResultsJoined], "wordNum": rollResultsJoined, "numRollsPerWord": numRollsPerWord});
-        } else if (numRollsPerWord === 2) {
-            words.push({"word": special[rollResultsJoined], "wordNum": rollResultsJoined, "numRollsPerWord": numRollsPerWord});
-        }
+        words.push(getWordFromWordNum(rollResultsJoined)[0]);
     }
 
     return words;
@@ -41,7 +42,38 @@ function getWords(numWords, numRollsPerWord) {
 // an Array with a single word object suitable for displayWords.
 function getWordFromWordNum(wordNum) {
     if (wordNum.length === 5) {
-        return [{"word": diceware[wordNum], "wordNum": wordNum}];
+        var word;
+        switch (currentList) {
+            case "alternative":
+                word = alternative[wordNum];
+                break;
+            case "catalan":
+                word = catalan[wordNum];
+                break;
+            case "dutch":
+                word = dutch[wordNum];
+                break;
+            case "esperanto":
+                word = esperanto[wordNum];
+                break;
+            case "german":
+                word = german[wordNum];
+                break;
+            case "japanese":
+                word = japanese[wordNum];
+                break;
+            case "polish":
+                word = polish[wordNum];
+                break;
+            case "swedish":
+                word = swedish[wordNum];
+                break;
+            default:
+                word = diceware[wordNum];
+                break;
+        }
+
+        return [{"word": word, "wordNum": wordNum}];
     } else if (wordNum.length === 2) {
         return [{"word": special[wordNum], "wordNum": wordNum}];
     }
@@ -99,7 +131,10 @@ function resetUI() {
 $(document).ready(function () {
     'use strict';
 
-    var wordList = []; // a global
+    // an array of objects representing the current random word list.
+    var wordList = [];
+
+    // clear and reset everything on load.
     resetUI();
 
     $('#buttonAddFourWords').on('click', function (e) {
@@ -161,6 +196,6 @@ $(document).ready(function () {
         $('#addFiveDieRollWord').val('');
     });
 
-    $('#listTitleHeader span').text(dicelist);
+    $('#listTitleHeader span').text(currentList);
 
 });

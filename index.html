@@ -254,13 +254,30 @@
 
     </div><!-- /.container -->
 
+    <!-- load zxcvbn async -->
+    <script src="js/bower_components/zxcvbn/zxcvbn.js"></script>
+
+    <!-- load third party libraries -->
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/bower_components/bootstrap-validator/dist/validator.min.js"></script>
-    <script src="js/zxcvbn-async.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/load-list.js"></script>
+
+    <!-- load the primary wordlist synchronously -->
     <script src="js/lists/special-min.js"></script>
+    <script src="js/lists/diceware-min.js"></script>
+
+    <!-- load the secondary languages async -->
+    <script async src="js/lists/alternative-min.js"></script>
+    <script async src="js/lists/catalan-min.js"></script>
+    <script async src="js/lists/dutch-min.js"></script>
+    <script async src="js/lists/esperanto-min.js"></script>
+    <script async src="js/lists/german-min.js"></script>
+    <script async src="js/lists/japanese-min.js"></script>
+    <script async src="js/lists/polish-min.js"></script>
+    <script async src="js/lists/swedish-min.js"></script>
+
+    <!-- core application JS -->
+    <script src="js/main.js"></script>
 
   </body>
 

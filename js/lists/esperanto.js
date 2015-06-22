@@ -1,4 +1,4 @@
-var diceware = {
+var esperanto = {
 11111:"0",
 11112:"1",
 11113:"2",
