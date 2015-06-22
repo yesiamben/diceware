@@ -121,6 +121,7 @@ function getURLParameterOrDefault(name) {
 
 function resetUI() {
     wordList = [];
+    $('#listTitleHeader span').text(currentList);
     $('#diceWords').html('');
     $("#diceWordsCopyable").text('');
     $("#diceWordsCopyableContainer").hide();
@@ -136,6 +137,15 @@ $(document).ready(function () {
 
     // clear and reset everything on load.
     resetUI();
+
+    $('.listSelectionLink').on('click', function (e) {
+        currentList = $(this).data("list");
+        // the active class gets applied to the parent <li> which
+        // gets highlited if that was the last selected link.
+        $('.listSelectionLink').parent().removeClass('active');
+        $(this).parent().addClass('active');
+        resetUI();
+    });
 
     $('#buttonAddFourWords').on('click', function (e) {
         e.preventDefault();
@@ -195,7 +205,5 @@ $(document).ready(function () {
         }
         $('#addFiveDieRollWord').val('');
     });
-
-    $('#listTitleHeader span').text(currentList);
 
 });
