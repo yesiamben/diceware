@@ -38,6 +38,26 @@ function getWords(numWords, numRollsPerWord) {
     return words;
 }
 
+// Polyfill : for Math.log2 which is part of ES6
+// See : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/log2
+Math.log2 = Math.log2 || function(x) {
+  return Math.log(x) / Math.LN2;
+};
+
+// See : http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy
+function calcEntropyForWordOrSymbol(isSymbol) {
+    var entropy;
+
+    if (!isSymbol) {
+        // ~ 12.9 bit of entropy per Diceware word.
+        entropy = Math.log2(7776);
+    } else {
+        // ~ 5.16 bits for special characters.
+        entropy = Math.log2(36);
+    }
+
+    return entropy;
+}
 // Lookup a word by its wordNum and return
 // an Array with a single word object suitable for displayWords.
 function getWordFromWordNum(wordNum) {
@@ -72,10 +92,9 @@ function getWordFromWordNum(wordNum) {
                 word = diceware[wordNum];
                 break;
         }
-
-        return [{"word": word, "wordNum": wordNum}];
+        return [{"word": word, "wordNum": wordNum, "entropy": calcEntropyForWordOrSymbol(false)}];
     } else if (wordNum.length === 2) {
-        return [{"word": special[wordNum], "wordNum": wordNum}];
+        return [{"word": special[wordNum], "wordNum": wordNum, "entropy": calcEntropyForWordOrSymbol(true)}];
     }
 }
 
@@ -85,6 +104,8 @@ function displayWords(words) {
 
     // add the word to the global array of words
     $.each(words, function( index, obj ) {
+        var totalEntropy = parseFloat($('#entropyResults').text()) + parseFloat(obj.entropy);
+        $('#entropyResults').text(totalEntropy);
         wordList.push(obj.word);
     });
 
@@ -104,13 +125,15 @@ function displayWords(words) {
     $("#diceWordsCopyableNoGap").text(wordListJoinedNoGap);
 
     $("#diceWordsCopyableContainer").slideDown();
-    $("#zxcvbnResults").html("estimates this passphrase contains " + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
+    $('#entropyEstimateContainer').slideDown();
+    $("#zxcvbnResults").html("~" + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
     $("#zxcvbnResultsContainer").slideDown();
-
 }
 
 function resetUI() {
     wordList = [];
+    $('#entropyResults').text('0.0');
+    $('#entropyEstimateContainer').hide();
     $('#listTitleHeader span').text(currentList);
     $('#diceWords').html('');
     $("#diceWordsCopyable").text('');
@@ -128,6 +151,7 @@ $(document).ready(function () {
     // clear and reset everything on load.
     resetUI();
 
+    // The nav links are used to select the current word list.
     $('.listSelectionLink').on('click', function (e) {
         currentList = $(this).data("list");
         // the active class gets applied to the parent <li> which
@@ -165,6 +189,18 @@ $(document).ready(function () {
         e.preventDefault();
         resetUI();
         displayWords(getWords(8, 5));
+    });
+
+    $('#buttonAddNineWords').on('click', function (e) {
+        e.preventDefault();
+        resetUI();
+        displayWords(getWords(9, 5));
+    });
+
+    $('#buttonAddTenWords').on('click', function (e) {
+        e.preventDefault();
+        resetUI();
+        displayWords(getWords(10, 5));
     });
 
     // single word button
