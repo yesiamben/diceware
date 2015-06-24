@@ -1,5 +1,0 @@
-*~
-*.js
-!zxcvbn.js
-test/index_dev.html
-node_modules

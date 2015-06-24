@@ -132,13 +132,6 @@
         <a href='http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy' target='_blank'>Learn more...</a>
       </div>
 
-      <div id="zxcvbnResultsContainer" class="well well-sm">
-        <span class="label label-default">zxcvbn</span><br /><br />
-        <p><span id="zxcvbnResults"></span></p>
-        <p><span class="label label-warning">warning</span> zxcvbn is designed to estimate the entropy in standard passwords made up of individual characters and not words chosen from a word list. As such, it likely overestimates the amount of entropy in any given result. It is shown here since many websites will use zxcvbn or similar password strength meters.</p>
-        <a href='https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/' target='_blank'>Learn more...</a>
-      </div>
-
       <hr />
 
       <h3 class="text-muted">Frequently Asked Questions</h3>
@@ -207,7 +200,7 @@
           <h3 class="panel-title">Where is the code for this application being served from?</h3>
         </div>
         <div class="panel-body">
-          The entire application is just HTML, JavaScript and CSS. There is no server side component and no database. All of the JavaScript and other assets are versioned in the repository and no code is served from outside of the repository. Tools like Jquery, Bootstrap, and zxcvbn are not served from a Content Delivery Network (CDN), which would enhance performance but decrease the security of the application.
+          The entire application is just HTML, JavaScript and CSS. There is no server side component and no database. All of the JavaScript and other assets are versioned in the repository and no code is served from outside of the repository. Tools like Jquery, and Bootstrap are not served from a Content Delivery Network (CDN), which would enhance performance but decrease the security of the application.
         </div>
       </div>
 
@@ -253,15 +246,6 @@
 
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h3 class="panel-title">What is zxcvbn, and crack time?</h3>
-        </div>
-        <div class="panel-body">
-          <p><a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/" target="_blank">zxcvbn</a> is an open-source tool created by Dropbox which aims to provide 'realistic password strength estimation'. This is notoriously difficult but zxcvbn seems to do the best job out there. Its estimations allow you to more realistically understand the strength of, and the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)" target="_blank">entropy</a> of, a password. It provides an entropy estimate, a score, and an estimated time in seconds, and a timespan in words, of how long it might take a theoretical set of machines with 100+ cores to attack your password. You should note that zxcvbn is designed to work best when estimating traditional passwords. Therefore its estimates are likely to be higher than the actual entropy in a 7776 line diceware word list. When in doubt use the entropy value shown in the 'entropy' block on the page which will be more accurate. The zxcvbn result is displayed so you may get a sense of what various password strength meters in use on the web may tell you about your password.</p>
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
           <h3 class="panel-title">Is the source code available and can I run my own copy locally?</h3>
         </div>
         <div class="panel-body">
@@ -292,9 +276,6 @@
       </div>
 
     </div><!-- /.container -->
-
-    <!-- load zxcvbn async -->
-    <script async src="js/bower_components/zxcvbn/zxcvbn.js"></script>
 
     <!-- load third party libraries -->
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>

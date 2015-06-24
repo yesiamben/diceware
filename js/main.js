@@ -201,18 +201,10 @@ function displayWords(words) {
         (crackTimeResults.universeLifetimes > 1) ? crackTimeResults.universeLifetimes.toFixed(0) : crackTimeResults.universeLifetimes.toFixed()
     );
 
-    var wordListJoinedSpace = wordList.join(' ');
-    var wordListJoinedDash = wordList.join('-');
-
-    // Display the ZXCVBN results
-    var zxcvbnResult = zxcvbn(wordListJoinedSpace);
-    $("#diceWordsCopyableSpace").text(wordListJoinedSpace);
-    $("#diceWordsCopyableDash").text(wordListJoinedDash);
-
+    $("#diceWordsCopyableSpace").text(wordList.join(' '));
+    $("#diceWordsCopyableDash").text(wordList.join('-'));
     $("#diceWordsCopyableContainer").slideDown();
     $('#entropyEstimateContainer').slideDown();
-    $("#zxcvbnResults").html("~" + zxcvbnResult.entropy + " bits of entropy with a crack time measured in " + zxcvbnResult.crack_time_display + " (" + zxcvbnResult.crack_time + " seconds)");
-    $("#zxcvbnResultsContainer").slideDown();
 }
 
 function resetUI() {
@@ -223,8 +215,6 @@ function resetUI() {
     $('#diceWords').html('');
     $("#diceWordsCopyable").text('');
     $("#diceWordsCopyableContainer").hide();
-    $("#zxcvbnResults").html("");
-    $("#zxcvbnResultsContainer").hide();
 }
 
 $(document).ready(function () {

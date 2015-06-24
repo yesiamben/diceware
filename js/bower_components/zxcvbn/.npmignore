@@ -1,8 +1,0 @@
-.gitignore
-*.sh
-README*
-data
-test
-tools
-scripts
-*.coffee
