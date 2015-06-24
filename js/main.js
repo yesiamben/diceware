@@ -1,7 +1,8 @@
-// Global
-// which list will be used to lookup words.
-// standard diceware wordlist by default.
+// Globals
+// which diceware language list will be used to lookup words.
 var currentList = "diceware";
+// an array of objects representing the current random word list.
+var wordList = [];
 
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
@@ -161,6 +162,12 @@ function displayWords(words) {
         $('#diceWords').append('<li>' + obj.word + '<span class="text-muted">' + obj.wordNum + '</span></li>');
     });
 
+    $("#diceWordsCopyableSpace").text(wordList.join(' '));
+    $("#diceWordsCopyableDash").text(wordList.join('-'));
+    $("#diceWordsCopyableContainer").slideDown();
+}
+
+function displayCrackTime(words) {
     $('#totalWords').text(words.length);
 
     // Display crack time results
@@ -201,9 +208,6 @@ function displayWords(words) {
         (crackTimeResults.universeLifetimes > 1) ? crackTimeResults.universeLifetimes.toFixed(0) : crackTimeResults.universeLifetimes.toFixed()
     );
 
-    $("#diceWordsCopyableSpace").text(wordList.join(' '));
-    $("#diceWordsCopyableDash").text(wordList.join('-'));
-    $("#diceWordsCopyableContainer").slideDown();
     $('#entropyEstimateContainer').slideDown();
 }
 
@@ -220,10 +224,7 @@ function resetUI() {
 $(document).ready(function () {
     'use strict';
 
-    // an array of objects representing the current random word list.
-    var wordList = [];
-
-    // clear and reset everything on load.
+    // clear and reset everything on initial load.
     resetUI();
 
     // The nav links are used to select the current word list.
@@ -246,6 +247,7 @@ $(document).ready(function () {
             resetUI();
         }
         displayWords(getWords(numWords, numRolls));
+        displayCrackTime(wordList);
     });
 
     // add a word from the output from analog die rolls e.g. 14352
@@ -260,6 +262,7 @@ $(document).ready(function () {
             displayWords(getWordFromWordNum(addFiveDieRollWord));
         }
         $('#addFiveDieRollWord').val('');
+        displayCrackTime(wordList);
     });
 
 });
