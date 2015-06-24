@@ -3,6 +3,8 @@
 var currentList = "diceware";
 // an array of objects representing the current random word list.
 var wordList = [];
+// the running tally of total entropy in the wordList
+var totalEntropy = new Big(0);
 
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
@@ -148,11 +150,10 @@ function getWordFromWordNum(wordNum) {
 function displayWords(words) {
     'use strict';
 
-    var totalEntropy = new Big(0);
-
     // add the word to the global array of words
     $.each(words, function( index, obj ) {
-        totalEntropy = totalEntropy.plus(obj.entropy);
+        var objEntropy = new Big(obj.entropy);
+        totalEntropy = totalEntropy.plus(objEntropy);
         $('#totalEntropy').text(totalEntropy.toFixed(2));
         wordList.push(obj.word);
     });
@@ -213,6 +214,7 @@ function displayCrackTime(words) {
 
 function resetUI() {
     wordList = [];
+    totalEntropy = new Big(0);
     $('#entropyResults').text('0.0');
     $('#entropyEstimateContainer').hide();
     $('#listTitleHeader span').text(currentList);
