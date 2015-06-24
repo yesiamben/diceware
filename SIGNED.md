@@ -2,13 +2,13 @@
 ```
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAABCgAGBQJViaM2AAoJEIXIECPZ4/wvo/EIAJFNlT8yT2lSm25MDUqaoLxz
-dLA6SdtP/6SgsMmFxtCQaVQvEWJqtqRMdGo/eYdk5yJrARSJ9tJIKkOHAWC7zjqd
-1w85ziAYH3rC/6E5hHpec/D61XA7NGZ0wQLyC0Fd1fKWZDgMxdZYg1kBeDSZly5W
-jODmPC0ND/LBBDxviin1Knt5LLmuySFXhfTQmxKKzGAu+3ojgNhfFIzfHk7Al+je
-2h4tNK1iSRIKR7Iqx2ukS8pXuX4XeULJUPO/m/ZmZccuDhOdedwxo9tcrXJMe0cd
-HCMkOKgvV5wAFemZD3xq6E5nnv6mx0qcVZkfHMzMQ2v8NmL54sglu/gySNxkh6g=
-=RIZy
+iQEcBAABCgAGBQJVixM6AAoJEIXIECPZ4/wvud0H/iW26DRBpMwROpj9WC+VdHEc
+TF1N2WYLlemz9hJOwmK4tULUCtjh1nepf78q99RgJZ3ixWXRruuoDfvGBrag+uBm
+pBLqPz0CvjkwwXT3oFTa+LPfGf5ocQObNkyFpjfAHdlOJpOAsHCGIb1QdQ0RxOsj
+wB2WOCaNTYLQEO0NmeCwUx8bQjbOmmVRsye1tuNkF5BaZJvm6kWkbiGuRZFPiDow
+wqitihvCEEXSFHT1mos3yJB71ckHhGjT1m8sbpTMT/w/M0py4fFDqMeI6gnfl1Y8
+dcekrS2ej8aTiRr+aSxUFYhFthY96yxSzDL6HjGj9VDF0g8/TqW6uGr3Czybu68=
+=Jyw8
 -----END PGP SIGNATURE-----
 
 ```
@@ -29,9 +29,16 @@ size     exec  file                                                contents
                  css/                                                                                                                                                                               
 111                app.css                                         f744e8ef060b7148dd6d595c9770ad602dfe2da8a5cb36f31f97adcd56275741                                                                 
 3262             favicon.ico                                       5869490d7e4863a1ddf8fee6f290c520f055d8faeb2730b36d87c9ed7edb16e2|120020ffb2e6a18d7a99066038d322a728fc92f1409c27cc95bb162860a82053
-20584            index.html                                        a5d17a72f2b966dfc1bde6f65202d75aaf50a73ed0ca459be67ea36a73324e7b                                                                 
+21921            index.html                                        4b6269de8f07607e3f86460214f00fde4363fd4863c39c84f51ce8b963181ab7                                                                 
                  js/                                                                                                                                                                                
                    bower_components/                                                                                                                                                                
+                     big.js/                                                                                                                                                                        
+485                    .bower.json                                 4692e541b218200c2bffbcabe6baa24d54c015c82cf006be81b5aa1cd809c338                                                                 
+1087                   LICENCE                                     590a0a10526a4956f8e7a969e49fbb04370bc25d1afed453a5fca653c8423b98                                                                 
+7684                   README.md                                   c017da02f7f83a7952276dd65029cf835d29c4d4228478a69e96a28ea190e874                                                                 
+28814                  big.js                                      32db90631a4e516ea7c5fc60dbeb6a897d527058a2711ffb4bd17e3a3f47c831                                                                 
+7582                   big.min.js                                  76f91cda46aaeec826dd708affdb007fc93a6b2f739255511fd31844ebfa9621                                                                 
+169                    bower.json                                  7ad892f36299eb63323402df14bac494a25969669fb8ebc1560585d5252bb7cc                                                                 
                      bootstrap/                                                                                                                                                                     
 937                    .bower.json                                 5d273a31f5608c1fcd1b43eaacab03193c12df374d7ffd10d4371dbf25789097                                                                 
 14881                  Gruntfile.js                                89ef10735515d2e790dcd7a61a3f8a095468f444ca8a2441cd0c8722ed661dfc                                                                 
@@ -355,7 +362,7 @@ size     exec  file                                                contents
 3755                     test.coffee                               ac5756a1be140e8c89d8a254ebc91724f69a0acc968e7885189cebd88feb92c0                                                                 
                        tools/                                                                                                                                                                       
 11358                    COPYING.txt                               cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30                                                                 
-5378434                  closure.jar                               a74f6e30d74a450a2ca21fe3a37a0418970cb3e219b2b6dab30c35a6f66ed540|f5416fb6e37634f14292f4bf286ee3d9d6d3e7f080ec7be68837af05de5bd442
+5378434                  closure.jar                               a74f6e30d74a450a2ca21fe3a37a0418970cb3e219b2b6dab30c35a6f66ed540|6fbf8c167cb859b4fcac37218597a0866ba9313ab0ba894339373e2111956ccd
 698403                 zxcvbn.js                                   0a3d6a34bc9757c5c469b98b77ad8acb500b847a7b57cfe62d8ba8a9206ce41e                                                                 
                    lists/                                                                                                                                                                           
 102906               alternative-min.js                            12e5e58ece50bd058ec16b25ef811c24ccfd4767db0eff66c4aa6015a9a181b9                                                                 
@@ -378,7 +385,7 @@ size     exec  file                                                contents
 559                  special.js                                    4accc1b13b258ae92f0821a87fe00be5f9c663da5ebfaac2ae462911a257d405                                                                 
 103805               swedish-min.js                                40925d4af4e0450aff18cc603ec6e78da83310ce37b5b8fb9b2215c2524a1a88                                                                 
 111587               swedish.js                                    9d03ac222f4bdba7c8349f6f748628e7c7349fc0b96932e0495c90e3e8020b4f                                                                 
-7611               main.js                                         f819b94f9dce2641759b34f80574c4bfe3d32a59d53a699f1223f1859bf01267                                                                 
+11325              main.js                                         abb48a3d48bb1b10a4a6b3123787f31826daa9be66b888afeec5d53a6302d3b0                                                                 
 ```
 
 #### Ignore

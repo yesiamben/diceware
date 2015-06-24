@@ -50,14 +50,59 @@ function calcEntropyForWordOrSymbol(isSymbol) {
 
     if (!isSymbol) {
         // ~ 12.9 bit of entropy per Diceware word.
-        entropy = Math.log2(7776);
+        entropy = new Big(Math.log2(7776));
     } else {
         // ~ 5.16 bits for special characters.
-        entropy = Math.log2(36);
+        entropy = new Big(Math.log2(36));
     }
 
     return entropy;
 }
+
+function calcCrackTime(numWords, guessesPerSec) {
+    var keySpace,
+        seconds,
+        minutes,
+        hours,
+        days,
+        years,
+        millenia,
+        humanLifetimes,
+        universeLifetimes,
+        avgHumanLifespanInYears = new Big(67.2),     // https://en.wikipedia.org/wiki/Life_expectancy
+        ageOfUniverseInYears = new Big(13798000000); // https://en.wikipedia.org/wiki/Age_of_the_universe
+
+    // https://xkcd.com/936/
+    // https://security.stackexchange.com/questions/62832/is-the-oft-cited-xkcd-scheme-no-longer-good-advice/62881#62881
+    // https://hashcat.net/forum/thread-2580.html
+    keySpace = new Big(Math.pow(7776, numWords));
+
+    // Divide the keySpace in half. On average it is expected that an
+    // exhaustive search of only half the keySpace will result in success.
+    halfKeySpace = keySpace.div(2);
+
+    // "Assume that your adversary is capable of a trillion guesses per second" - Snowden
+    // http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0
+    if (!guessesPerSec) {
+        guessesPerSec = new Big(1000000000000);
+    } else {
+        guessesPerSec = new Big(guessesPerSec);
+    }
+
+    seconds           = halfKeySpace.div(guessesPerSec);
+    minutes           = seconds.div(60);
+    hours             = minutes.div(60);
+    days              = hours.div(24);
+    years             = days.div(365);
+    millenia          = years.div(1000);
+    humanLifetimes    = years.div(avgHumanLifespanInYears);
+    universeLifetimes = years.div(ageOfUniverseInYears);
+
+    // All values returned are of 'Big' type.
+    // See : https://mikemcl.github.io/big.js/
+    return {numWords: numWords, guessesPerSec: guessesPerSec, keySpace: keySpace, halfKeySpace: halfKeySpace, seconds: seconds, hours: hours, minutes: minutes, days: days, years: years, avgHumanLifespanInYears: avgHumanLifespanInYears, humanLifetimes: humanLifetimes, millenia: millenia, ageOfUniverseInYears: ageOfUniverseInYears, universeLifetimes: universeLifetimes};
+}
+
 // Lookup a word by its wordNum and return
 // an Array with a single word object suitable for displayWords.
 function getWordFromWordNum(wordNum) {
@@ -102,10 +147,12 @@ function getWordFromWordNum(wordNum) {
 function displayWords(words) {
     'use strict';
 
+    var totalEntropy = new Big(0);
+
     // add the word to the global array of words
     $.each(words, function( index, obj ) {
-        var totalEntropy = parseFloat($('#entropyResults').text()) + parseFloat(obj.entropy);
-        $('#entropyResults').text(totalEntropy);
+        totalEntropy = totalEntropy.plus(obj.entropy);
+        $('#totalEntropy').text(totalEntropy.toFixed(2));
         wordList.push(obj.word);
     });
 
@@ -114,11 +161,51 @@ function displayWords(words) {
         $('#diceWords').append('<li>' + obj.word + '<span class="text-muted">' + obj.wordNum + '</span></li>');
     });
 
-    // Display the ZXCVBN results
+    $('#totalWords').text(words.length);
+
+    // Display crack time results
+    var crackTimeResults = calcCrackTime(words.length);
+
+    $('#crackTimeResultsGuessesPerSecond').text(crackTimeResults.guessesPerSec.toFixed(0));
+    $('#crackTimeResultsHalfKeySpace').text(crackTimeResults.halfKeySpace.toFixed(0));
+
+    $('#crackTimeResultsSeconds').text(
+        (crackTimeResults.seconds > 1) ? crackTimeResults.seconds.toFixed(0) : crackTimeResults.seconds.toFixed(2)
+    );
+
+    $('#crackTimeResultsMinutes').text(
+        (crackTimeResults.minutes > 1) ? crackTimeResults.minutes.toFixed(0) : crackTimeResults.minutes.toFixed(2)
+    );
+
+    $('#crackTimeResultsHours').text(
+        (crackTimeResults.hours > 1) ? crackTimeResults.hours.toFixed(0) : crackTimeResults.hours.toFixed(2)
+    );
+
+    $('#crackTimeResultsDays').text(
+        (crackTimeResults.days > 1) ? crackTimeResults.days.toFixed(0) : crackTimeResults.days.toFixed(2)
+    );
+
+    $('#crackTimeResultsYears').text(
+        (crackTimeResults.years > 1) ? crackTimeResults.years.toFixed(0) : crackTimeResults.years.toFixed(4)
+    );
+
+    $('#crackTimeResultsHumanLifetimes').text(
+        (crackTimeResults.humanLifetimes > 1) ? crackTimeResults.humanLifetimes.toFixed(0) : crackTimeResults.humanLifetimes.toFixed(6)
+    );
+
+    $('#crackTimeResultsMillenia').text(
+        (crackTimeResults.millenia > 1) ? crackTimeResults.millenia.toFixed(0) : crackTimeResults.millenia.toFixed(7)
+    );
+
+    $('#crackTimeResultsUniverseLifetimes').text(
+        (crackTimeResults.universeLifetimes > 1) ? crackTimeResults.universeLifetimes.toFixed(0) : crackTimeResults.universeLifetimes.toFixed()
+    );
+
     var wordListJoinedSpace = wordList.join(' ');
     var wordListJoinedDash = wordList.join('-');
     var wordListJoinedNoGap = wordList.join('');
 
+    // Display the ZXCVBN results
     var zxcvbnResult = zxcvbn(wordListJoinedSpace);
     $("#diceWordsCopyableSpace").text(wordListJoinedSpace);
     $("#diceWordsCopyableDash").text(wordListJoinedDash);

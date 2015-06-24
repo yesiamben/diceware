@@ -119,7 +119,16 @@
 
       <div id="entropyEstimateContainer" class="well well-sm">
         <span class="label label-default">entropy</span><br /><br />
-        <p>~<span id="entropyResults"></span> bits of entropy in this passphrase (~12.92 bits/word and ~5.16/symbol).</p>
+        <p>There are <code id="totalWords"></code> words in your password, which is ~<code id="totalEntropy"></code> bits of entropy (<code>~12.92 bits/word</code> and <code>~5.16/symbol</code>).
+          That many words equates to an  effective keyspace of ~<code id="crackTimeResultsHalfKeySpace"></code> possible keys (<code>(7776^words)/2</code> which is 50% of the total key space since on average a key will be found in that reduced keyspace). Conservatively assuming an adversary can guess passwords at the rate of a trillion (<code id="crackTimeResultsGuessesPerSecond"></code>) keys/second, <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0", target="_blank">as Edward Snowden claims</a>, an exhaustive brute-force search on half the total keyspace might take:</p>
+        <p>~<code id="crackTimeResultsSeconds"></code> seconds</p>
+        <p>~<code id="crackTimeResultsMinutes"></code> minutes</p>
+        <p>~<code id="crackTimeResultsHours"></code> hours</p>
+        <p>~<code id="crackTimeResultsDays"></code> days</p>
+        <p>~<code id="crackTimeResultsYears"></code> years</p>
+        <p>~<code id="crackTimeResultsHumanLifetimes"></code> x Avg. Human Lifespan</p>
+        <p>~<code id="crackTimeResultsMillenia"></code> millenia</p>
+        <p>~<code id="crackTimeResultsUniverseLifetimes"></code> x Age of the Universe</p>
         <a href='http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy' target='_blank'>Learn more...</a>
       </div>
 
@@ -289,6 +298,7 @@
 
     <!-- load third party libraries -->
     <script src="js/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="js/bower_components/big.js/big.min.js"></script>
     <script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="js/bower_components/bootstrap-validator/dist/validator.min.js"></script>
 
