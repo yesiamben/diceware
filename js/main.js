@@ -215,7 +215,6 @@ function displayCrackTime(words) {
 function resetUI() {
     wordList = [];
     totalEntropy = new Big(0);
-    $('#entropyResults').text('0.0');
     $('#entropyEstimateContainer').hide();
     $('#listTitleHeader span').text(currentList);
     $('#diceWords').html('');
