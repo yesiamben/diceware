@@ -6,6 +6,20 @@ var wordList = [];
 // the running tally of total entropy in the wordList
 var totalEntropy = new Big(0);
 
+// Simple function to add commas to really large number strings
+//  http://www.mredkj.com/javascript/nfbasic.html
+function addCommas(nStr) {
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? '.' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+    }
+    return x1 + x2;
+}
+
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
 // objects of length numWords (default 1). Each object in
@@ -174,39 +188,39 @@ function displayCrackTime(words) {
     // Display crack time results
     var crackTimeResults = calcCrackTime(words.length);
 
-    $('#crackTimeResultsGuessesPerSecond').text(crackTimeResults.guessesPerSec.toFixed(0));
-    $('#crackTimeResultsHalfKeySpace').text(crackTimeResults.halfKeySpace.toFixed(0));
+    $('#crackTimeResultsGuessesPerSecond').text(addCommas(crackTimeResults.guessesPerSec.toFixed(0)));
+    $('#crackTimeResultsHalfKeySpace').text(addCommas(crackTimeResults.halfKeySpace.toFixed(0)));
 
     $('#crackTimeResultsSeconds').text(
-        (crackTimeResults.seconds > 1) ? crackTimeResults.seconds.toFixed(0) : crackTimeResults.seconds.toFixed(2)
+        (crackTimeResults.seconds > 1) ? addCommas(crackTimeResults.seconds.toFixed(0)) : addCommas(crackTimeResults.seconds.toFixed(2))
     );
 
     $('#crackTimeResultsMinutes').text(
-        (crackTimeResults.minutes > 1) ? crackTimeResults.minutes.toFixed(0) : crackTimeResults.minutes.toFixed(2)
+        (crackTimeResults.minutes > 1) ? addCommas(crackTimeResults.minutes.toFixed(0)) : addCommas(crackTimeResults.minutes.toFixed(2))
     );
 
     $('#crackTimeResultsHours').text(
-        (crackTimeResults.hours > 1) ? crackTimeResults.hours.toFixed(0) : crackTimeResults.hours.toFixed(2)
+        (crackTimeResults.hours > 1) ? addCommas(crackTimeResults.hours.toFixed(0)) : addCommas(crackTimeResults.hours.toFixed(2))
     );
 
     $('#crackTimeResultsDays').text(
-        (crackTimeResults.days > 1) ? crackTimeResults.days.toFixed(0) : crackTimeResults.days.toFixed(2)
+        (crackTimeResults.days > 1) ? addCommas(crackTimeResults.days.toFixed(0)) : addCommas(crackTimeResults.days.toFixed(2))
     );
 
     $('#crackTimeResultsYears').text(
-        (crackTimeResults.years > 1) ? crackTimeResults.years.toFixed(0) : crackTimeResults.years.toFixed(4)
+        (crackTimeResults.years > 1) ? addCommas(crackTimeResults.years.toFixed(0)) : addCommas(crackTimeResults.years.toFixed(4))
     );
 
     $('#crackTimeResultsHumanLifetimes').text(
-        (crackTimeResults.humanLifetimes > 1) ? crackTimeResults.humanLifetimes.toFixed(0) : crackTimeResults.humanLifetimes.toFixed(6)
+        (crackTimeResults.humanLifetimes > 1) ? addCommas(crackTimeResults.humanLifetimes.toFixed(0)) : addCommas(crackTimeResults.humanLifetimes.toFixed(6))
     );
 
     $('#crackTimeResultsMillenia').text(
-        (crackTimeResults.millenia > 1) ? crackTimeResults.millenia.toFixed(0) : crackTimeResults.millenia.toFixed(7)
+        (crackTimeResults.millenia > 1) ? addCommas(crackTimeResults.millenia.toFixed(0)) : addCommas(crackTimeResults.millenia.toFixed(7))
     );
 
     $('#crackTimeResultsUniverseLifetimes').text(
-        (crackTimeResults.universeLifetimes > 1) ? crackTimeResults.universeLifetimes.toFixed(0) : crackTimeResults.universeLifetimes.toFixed()
+        (crackTimeResults.universeLifetimes > 1) ? addCommas(crackTimeResults.universeLifetimes.toFixed(0)) : addCommas(crackTimeResults.universeLifetimes.toFixed())
     );
 
     $('#entropyEstimateContainer').slideDown();

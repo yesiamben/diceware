@@ -2,13 +2,13 @@
 ```
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAABCgAGBQJViyyVAAoJEIXIECPZ4/wvL8sIAKntjVKTcal4H0MhAeVEuNAN
-9S7egxR90DVW9GLZx9rlhzE4T2fnPMybYM2iIwKir1izP1p0LKYqnVfDlAvBhVo3
-tUlXsioFk2GYNxY7zUfrK0TPj/FGtEJoDtql4v27SYmcRT+x9arwIYVQa3MQYIUc
-hR9poAoIO/cTY8+jIdSEOy8GihyY7n4CHH4NEXfDa8nj6t4mXYz3uBkHdyuUKLhC
-HErodwDILmwt2lcuB+tB9r66cvSpyPPDQMS3FkplKmAqMgPNR7ScHSgyniqVlk8C
-mrDsh6iJ6XOiPpp62Cq8CKqGHxm4oLuUW+4sJGNXKRJAR12P0WNm5Eit3yf4CrE=
-=kIpk
+iQEcBAABCgAGBQJVizEjAAoJEIXIECPZ4/wvEsMH/jRldD1QWdpI4pM3I5kfkKG5
+kRHhAmI+G9wLKcKYQEdG4nCMv1iVQUtSjSSdz2RxnsTqccCfGzklCRequ0hyOZAl
+E7LuTuZsYHWJqcuJVEYNcKDbRlruzoG6Jq4JF3JTC9YBFEKD6nrYpu0xtCZbL4mR
+Wl9ilt47sVmwnf+/ehVJkKpTuA7ZYV3ENtL4SmyYUmdLSKxhe0HJ91Or4R8uCBjn
+s7JBDV+J1Fr5mc3733nVTCQVhVkAjaq19U1LBaDHzgQpXICD/bdsKalKVZgCBD8H
+d0iULwA4Y80/uQWslYO5Gus1C7JaepWo3VGMlXsXoTtU+KFoVdO4iKBVXIzHbLE=
+=xqII
 -----END PGP SIGNATURE-----
 
 ```
@@ -29,7 +29,7 @@ size    exec  file                                                contents
                 css/                                                                                                                                                                               
 111               app.css                                         f744e8ef060b7148dd6d595c9770ad602dfe2da8a5cb36f31f97adcd56275741                                                                 
 3262            favicon.ico                                       5869490d7e4863a1ddf8fee6f290c520f055d8faeb2730b36d87c9ed7edb16e2|120020ffb2e6a18d7a99066038d322a728fc92f1409c27cc95bb162860a82053
-20053           index.html                                        e359018794999971ef94b5c1fafafc678cd4fbb5d5d11e668d17a36f574c2451                                                                 
+20040           index.html                                        75b2cbb876fb84f8a48d2100d3f2701193ed26d738e94fb8982454a03028a9f4                                                                 
                 js/                                                                                                                                                                                
                   bower_components/                                                                                                                                                                
                     big.js/                                                                                                                                                                        
@@ -328,7 +328,7 @@ size    exec  file                                                contents
 559                 special.js                                    4accc1b13b258ae92f0821a87fe00be5f9c663da5ebfaac2ae462911a257d405                                                                 
 103805              swedish-min.js                                40925d4af4e0450aff18cc603ec6e78da83310ce37b5b8fb9b2215c2524a1a88                                                                 
 111587              swedish.js                                    9d03ac222f4bdba7c8349f6f748628e7c7349fc0b96932e0495c90e3e8020b4f                                                                 
-9828              main.js                                         942eafe3750eca225098189d0f64a27130c4b816a53c9889da53481f3dfce675                                                                 
+10399             main.js                                         43bac650538f2e277c09012e0c4e734478141033dd09fc6e00c2ba3deaa57aeb                                                                 
 ```
 
 #### Ignore
