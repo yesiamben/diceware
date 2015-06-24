@@ -203,13 +203,11 @@ function displayWords(words) {
 
     var wordListJoinedSpace = wordList.join(' ');
     var wordListJoinedDash = wordList.join('-');
-    var wordListJoinedNoGap = wordList.join('');
 
     // Display the ZXCVBN results
     var zxcvbnResult = zxcvbn(wordListJoinedSpace);
     $("#diceWordsCopyableSpace").text(wordListJoinedSpace);
     $("#diceWordsCopyableDash").text(wordListJoinedDash);
-    $("#diceWordsCopyableNoGap").text(wordListJoinedNoGap);
 
     $("#diceWordsCopyableContainer").slideDown();
     $('#entropyEstimateContainer').slideDown();

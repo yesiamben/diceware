@@ -2,13 +2,13 @@
 ```
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAABCgAGBQJVixM6AAoJEIXIECPZ4/wvud0H/iW26DRBpMwROpj9WC+VdHEc
-TF1N2WYLlemz9hJOwmK4tULUCtjh1nepf78q99RgJZ3ixWXRruuoDfvGBrag+uBm
-pBLqPz0CvjkwwXT3oFTa+LPfGf5ocQObNkyFpjfAHdlOJpOAsHCGIb1QdQ0RxOsj
-wB2WOCaNTYLQEO0NmeCwUx8bQjbOmmVRsye1tuNkF5BaZJvm6kWkbiGuRZFPiDow
-wqitihvCEEXSFHT1mos3yJB71ckHhGjT1m8sbpTMT/w/M0py4fFDqMeI6gnfl1Y8
-dcekrS2ej8aTiRr+aSxUFYhFthY96yxSzDL6HjGj9VDF0g8/TqW6uGr3Czybu68=
-=Jyw8
+iQEcBAABCgAGBQJVixPiAAoJEIXIECPZ4/wvTwgH/2W9R4u9u8kG7ofrAJmM+D1h
+uqnonrFUzJZCXAw8r5VstzUh9ROzg4eYNdzORu11Y1F279ZcuD7Kji7qr+igE37j
+0lmAMiMZcU6g7LybroMpib/W5i/1AwojNP8iKipjqvsFu34VNZKws1iwah1um8xt
+/mIxihWO6gj/4E4J8fqqmIF9Gv/hSYmdlpiJPt/5hIwHOhzN3s1lEnC9I64hSSio
+c8mv6BWxW9/3Nzhqoufzuiqzl0jEkfjdGK04AIBdZ5UyczbXrmneFNWJCUhF78oy
+KmBbsGWACHG0EAuAzQKooj5xVFkjkBiQGLL1hANNAetaypzTN3eUh2fmv2Nytbc=
+=wjc4
 -----END PGP SIGNATURE-----
 
 ```
@@ -362,7 +362,7 @@ size     exec  file                                                contents
 3755                     test.coffee                               ac5756a1be140e8c89d8a254ebc91724f69a0acc968e7885189cebd88feb92c0                                                                 
                        tools/                                                                                                                                                                       
 11358                    COPYING.txt                               cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30                                                                 
-5378434                  closure.jar                               a74f6e30d74a450a2ca21fe3a37a0418970cb3e219b2b6dab30c35a6f66ed540|6fbf8c167cb859b4fcac37218597a0866ba9313ab0ba894339373e2111956ccd
+5378434                  closure.jar                               a74f6e30d74a450a2ca21fe3a37a0418970cb3e219b2b6dab30c35a6f66ed540|f5416fb6e37634f14292f4bf286ee3d9d6d3e7f080ec7be68837af05de5bd442
 698403                 zxcvbn.js                                   0a3d6a34bc9757c5c469b98b77ad8acb500b847a7b57cfe62d8ba8a9206ce41e                                                                 
                    lists/                                                                                                                                                                           
 102906               alternative-min.js                            12e5e58ece50bd058ec16b25ef811c24ccfd4767db0eff66c4aa6015a9a181b9                                                                 
@@ -385,7 +385,7 @@ size     exec  file                                                contents
 559                  special.js                                    4accc1b13b258ae92f0821a87fe00be5f9c663da5ebfaac2ae462911a257d405                                                                 
 103805               swedish-min.js                                40925d4af4e0450aff18cc603ec6e78da83310ce37b5b8fb9b2215c2524a1a88                                                                 
 111587               swedish.js                                    9d03ac222f4bdba7c8349f6f748628e7c7349fc0b96932e0495c90e3e8020b4f                                                                 
-11325              main.js                                         abb48a3d48bb1b10a4a6b3123787f31826daa9be66b888afeec5d53a6302d3b0                                                                 
+11216              main.js                                         0bcd9b1b84ca740c934f02ac84bca6a17bec6f36af33be47e3bca7d2d3fe68ed                                                                 
 ```
 
 #### Ignore
