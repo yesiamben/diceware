@@ -236,61 +236,16 @@ $(document).ready(function () {
         resetUI();
     });
 
-    $('#buttonAddFourWords').on('click', function (e) {
+    // The nav links are used to select the current word list.
+    $('.genWordsButton').on('click', function (e) {
+        var numWords = parseInt($(this).data("words"));
+        var numRolls = parseInt($(this).data("rolls"));
+        var reset = parseInt($(this).data("reset"));
         e.preventDefault();
-        resetUI();
-        displayWords(getWords(4, 5));
-    });
-
-    $('#buttonAddFiveWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(5, 5));
-    });
-
-    $('#buttonAddSixWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(6, 5));
-    });
-
-    $('#buttonAddSevenWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(7, 5));
-    });
-
-    $('#buttonAddEightWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(8, 5));
-    });
-
-    $('#buttonAddNineWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(9, 5));
-    });
-
-    $('#buttonAddTenWords').on('click', function (e) {
-        e.preventDefault();
-        resetUI();
-        displayWords(getWords(10, 5));
-    });
-
-    // single word button
-    // does not reset UI. Adds onto existing wordList
-    $('#buttonAddWord').on('click', function (e) {
-        e.preventDefault();
-        displayWords(getWords(1, 5));
-    });
-
-    // single symbol button
-    // does not reset UI. Adds onto existing wordList
-    $('#buttonAddSymbol').on('click', function (e) {
-        e.preventDefault();
-        // two die roll
-        displayWords(getWords(1, 2));
+        if (reset === 1) {
+            resetUI();
+        }
+        displayWords(getWords(numWords, numRolls));
     });
 
     // add a word from the output from analog die rolls e.g. 14352
