@@ -20,6 +20,14 @@ function addCommas(nStr) {
     return x1 + x2;
 }
 
+// Security Function. Returns the CSPRNG bytes.
+function getRandomByteArray(numElements) {
+    numElements = parseInt(numElements);
+    var randomBytes = new Uint32Array(numElements);
+    window.crypto.getRandomValues(randomBytes);
+    return randomBytes;
+}
+
 // Use a cryptographically strong random number generator
 // to get the die roll results. Returns an array of
 // objects of length numWords (default 1). Each object in
@@ -40,8 +48,7 @@ function getWords(numWords, numRollsPerWord) {
 
     for (i = 0; i < numWords; i += 1) {
         rollResults = [];
-        randomBytes = new Uint32Array(numRollsPerWord);
-        window.crypto.getRandomValues(randomBytes);
+        randomBytes = getRandomByteArray(numRollsPerWord);
 
         for (j = 0; j < randomBytes.length; j += 1) {
             // Convert random Byte into 6 sided die roll
