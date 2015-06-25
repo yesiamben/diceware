@@ -2,13 +2,13 @@
 ```
 -----BEGIN PGP SIGNATURE-----
 
-iQEcBAABCgAGBQJVizEjAAoJEIXIECPZ4/wvEsMH/jRldD1QWdpI4pM3I5kfkKG5
-kRHhAmI+G9wLKcKYQEdG4nCMv1iVQUtSjSSdz2RxnsTqccCfGzklCRequ0hyOZAl
-E7LuTuZsYHWJqcuJVEYNcKDbRlruzoG6Jq4JF3JTC9YBFEKD6nrYpu0xtCZbL4mR
-Wl9ilt47sVmwnf+/ehVJkKpTuA7ZYV3ENtL4SmyYUmdLSKxhe0HJ91Or4R8uCBjn
-s7JBDV+J1Fr5mc3733nVTCQVhVkAjaq19U1LBaDHzgQpXICD/bdsKalKVZgCBD8H
-d0iULwA4Y80/uQWslYO5Gus1C7JaepWo3VGMlXsXoTtU+KFoVdO4iKBVXIzHbLE=
-=xqII
+iQEcBAABCgAGBQJVjDjvAAoJEIXIECPZ4/wvMn4IAJpBTso83uwFwOn0yUaJAP9A
+lcNQ4hXI3P29k3NSssS8+7LmqFr3csiX1O1prigcaqhVNtk92xon5lb+g9WNPIjN
+aFfeXHVAN7R/Jh2A+iSWJNo5K0zowfDSBI0U9m9amcQZDTgurCnEh0hMgTvnhTHa
+/yP3qUXPXhvc+BhFnVITEQwPlTAGy7oIB4j4BJtsS1h3seN7WEcHrwBF2ph2V82g
+OK6ErTdxyNl7ANfJCnjS5FjMq7jBRqi7elLIZMI94ZVeR9JBa0VMQTdFmNe1cRL/
+oQbmVIRnadekjMCx47oOSIjblpEQyvymlB2crSUH79Tc5fholZJYW2Ih0qxVZPc=
+=/LFb
 -----END PGP SIGNATURE-----
 
 ```
@@ -328,7 +328,7 @@ size    exec  file                                                contents
 559                 special.js                                    4accc1b13b258ae92f0821a87fe00be5f9c663da5ebfaac2ae462911a257d405                                                                 
 103805              swedish-min.js                                40925d4af4e0450aff18cc603ec6e78da83310ce37b5b8fb9b2215c2524a1a88                                                                 
 111587              swedish.js                                    9d03ac222f4bdba7c8349f6f748628e7c7349fc0b96932e0495c90e3e8020b4f                                                                 
-10399             main.js                                         43bac650538f2e277c09012e0c4e734478141033dd09fc6e00c2ba3deaa57aeb                                                                 
+10609             main.js                                         2ed2840deec223ee7e591cbf4b7554c9b7707659e9ccbd2f229079260c5d7068                                                                 
 ```
 
 #### Ignore
