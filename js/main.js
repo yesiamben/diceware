@@ -145,6 +145,9 @@ function getWordFromWordNum(wordNum) {
             case "esperanto":
                 word = esperanto[wordNum];
                 break;
+            case "french":
+                word = french[wordNum];
+                break;
             case "german":
                 word = german[wordNum];
                 break;
