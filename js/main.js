@@ -154,6 +154,9 @@ function getWordFromWordNum(wordNum) {
             case "japanese":
                 word = japanese[wordNum];
                 break;
+            case "maori":
+                word = maori[wordNum];
+                break;
             case "polish":
                 word = polish[wordNum];
                 break;
