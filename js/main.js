@@ -9,6 +9,7 @@ var totalEntropy = new Big(0)
 // Simple function to add commas to really large number strings
 //  http://www.mredkj.com/javascript/nfbasic.html
 function addCommas (nStr) {
+  var x, x1, x2
   nStr += ''
   x = nStr.split('.')
   x1 = x[0]
@@ -22,7 +23,7 @@ function addCommas (nStr) {
 
 // Security Function. Returns the CSPRNG bytes.
 function getRandomByteArray (numElements) {
-  numElements = parseInt(numElements)
+  numElements = parseInt(numElements, 10)
   var randomBytes = new Uint32Array(numElements)
   window.crypto.getRandomValues(randomBytes)
   return randomBytes
@@ -38,13 +39,15 @@ function getWords (numWords, numRollsPerWord) {
 
   var i,
     j,
-    words = [],
+    words,
     rollResults,
     rollResultsJoined,
     randomBytes
 
-  if (!numWords) { numWords = 1; }
-  if (!numRollsPerWord) { numRollsPerWord = 5; }
+  words = []
+
+  if (!numWords) { numWords = 1 }
+  if (!numRollsPerWord) { numRollsPerWord = 5 }
 
   for (i = 0; i < numWords; i += 1) {
     rollResults = []
@@ -85,6 +88,7 @@ function calcEntropyForWordOrSymbol (isSymbol) {
 
 function calcCrackTime (numWords, guessesPerSec) {
   var keySpace,
+    halfKeySpace,
     seconds,
     minutes,
     hours,
@@ -93,8 +97,14 @@ function calcCrackTime (numWords, guessesPerSec) {
     millenia,
     humanLifetimes,
     universeLifetimes,
-    avgHumanLifespanInYears = new Big(67.2), // https://en.wikipedia.org/wiki/Life_expectancy
-    ageOfUniverseInYears = new Big(13798000000); // https://en.wikipedia.org/wiki/Age_of_the_universe
+    avgHumanLifespanInYears,
+    ageOfUniverseInYears
+
+  // https://en.wikipedia.org/wiki/Life_expectancy
+  avgHumanLifespanInYears = new Big(67.2)
+
+  // https://en.wikipedia.org/wiki/Age_of_the_universe
+  ageOfUniverseInYears = new Big(13798000000)
 
   // https://xkcd.com/936/
   // https://security.stackexchange.com/questions/62832/is-the-oft-cited-xkcd-scheme-no-longer-good-advice/62881#62881
@@ -267,9 +277,10 @@ $(document).ready(function () {
 
   // The nav links are used to select the current word list.
   $('.genWordsButton').on('click', function (e) {
-    var numWords = parseInt($(this).data('words'))
-    var numRolls = parseInt($(this).data('rolls'))
-    var reset = parseInt($(this).data('reset'))
+    var numWords, numRolls, reset
+    numWords = parseInt($(this).data('words'), 10)
+    numRolls = parseInt($(this).data('rolls'), 10)
+    reset = parseInt($(this).data('reset'), 10)
     e.preventDefault()
     if (reset === 1) {
       resetUI()
