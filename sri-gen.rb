@@ -4,7 +4,6 @@
 # and store them in a JSON file which can also be versioned
 # or consumed programatically.
 
-require 'rake'
 require 'digest/sha2'
 require 'json'
 
