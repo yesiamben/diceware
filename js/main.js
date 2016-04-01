@@ -257,11 +257,22 @@ function resetUI () {
   $('#diceWords').html('')
   $('#diceWordsCopyable').text('')
   $('#diceWordsCopyableContainer').hide()
+  window.location.hash = currentList
 }
 
 $(document).ready(function () {
   'use strict'
 
+  // Load any wordlist specified in the URL's hash.
+  var listName = window.location.hash.substr(1)
+  var nameLink = $("a.listSelectionLink[data-list='" + listName + "']")
+  if (nameLink.length == 1) {
+      currentList = listName
+  } else {
+      console.log("Wordlist not found: '", listName, "'")
+      nameLink = $("a.listSelectionLink[data-list='" + currentList + "']")
+  }
+  nameLink.parent().addClass('active')
   // clear and reset everything on initial load.
   resetUI()
 
@@ -273,6 +284,8 @@ $(document).ready(function () {
     $('.listSelectionLink').parent().removeClass('active')
     $(this).parent().addClass('active')
     resetUI()
+    // Propagation of the form submission resets the URL's hash.
+    e.preventDefault()
   })
 
   // The nav links are used to select the current word list.
