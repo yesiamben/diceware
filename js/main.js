@@ -173,6 +173,9 @@ function getWordFromWordNum (wordNum) {
       case 'swedish':
         word = swedish[wordNum]
         break
+      case 'spanish':
+        word = spanish[wordNum]
+        break
       default:
         word = diceware[wordNum]
         break
