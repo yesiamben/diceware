@@ -25,7 +25,8 @@ function addCommas (nStr) {
 function getRandomByteArray (numElements) {
   numElements = parseInt(numElements, 10)
   var randomBytes = new Uint32Array(numElements)
-  window.crypto.getRandomValues(randomBytes)
+  var objCrypto = window.crypto || window.msCrypto
+  objCrypto.getRandomValues(randomBytes)
   return randomBytes
 }
 
