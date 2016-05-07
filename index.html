@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="An easy way to generate a Diceware passphase.">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>Diceware Secure Passphrase Generator</title>
+    <link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css" type="text/css" integrity="sha384-0Bz7QZBeDqE9aX4Vm/bOK4ThJOOwmoP2nKRhx/Qt5WCLRwImSMOjzNjOKQnHHPIw" crossorigin="anonymous">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Diceware</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="#" class="listSelectionLink" data-list="diceware">English</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="alternative">English (Alternative)</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="catalan">Catalan</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="dutch">Dutch</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="esperanto">Esperanto</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="french">French</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="german">German</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="japanese">Japanese</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="maori">Maori</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="polish">Polish</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="spanish">Spanish</a></li>
+            <li><a href="#" class="listSelectionLink" data-list="swedish">Swedish</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 id="listTitleHeader"><span class="text-capitalize"></span>&nbsp;<small>wordlist</small></h1>
+        <p class="lead">
+          <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a> is used
+          to generate cryptographically strong passphrases. It is based on the principle that truly
+          random selection of words from a
+          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>,
+          can result in easily memorable passwords that are also extremely resistant to attack.
+          Traditional Diceware uses rolls of physical dice, this application uses a strong random number
+          generator in place of the dice.
+
+          Passwords that are <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a>
+          or longer are thought to be safe for very high security applications.
+        </p>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Add random words group">
+        <button type="button" class="btn btn-warning genWordsButton" data-words="4" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 4 Words
+        </button>
+        <button type="button" class="btn btn-warning genWordsButton" data-words="5" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 5 Words
+        </button>
+        <button type="button" class="btn btn-success genWordsButton" data-words="6" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 6 Words
+        </button>
+        <button type="button" class="btn btn-success genWordsButton" data-words="7" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 7 Words
+        </button>
+        <button type="button" class="btn btn-success genWordsButton" data-words="8" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 8 Words
+        </button>
+        <button type="button" class="btn btn-success genWordsButton" data-words="9" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 9 Words
+        </button>
+        <button type="button" class="btn btn-success genWordsButton" data-words="10" data-rolls="5" data-reset="1">
+          <span class="glyphicon glyphicon-random" aria-hidden="true"></span> 10 Words
+        </button>
+        <button type="button" class="btn btn-default genWordsButton" data-words="1" data-rolls="5" data-reset="0">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Word
+        </button>
+        <button type="button" class="btn btn-default genWordsButton" data-words="1" data-rolls="2" data-reset="0">
+          <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Symbol
+        </button>
+      </div>
+
+      <br />
+      <br />
+
+      <form id="addFiveDieRollWordForm" class="form-inline" data-toggle="validator">
+        <div class="form-group">
+          <label class="sr-only" for="addFiveDieRollWord">Add Two or Five Die Roll</label>
+          <div class="input-group">
+            <div class="input-group-addon">#</div>
+            <input type="text" class="form-control" id="addFiveDieRollWord" placeholder="+ 2x or 5x die roll" maxlength="5" pattern="^[1-6]{2,5}$" autocomplete="off" autofocus>
+          </div>
+          <span class="help-block with-errors"></span>
+        </div>
+      </form>
+
+      <br />
+      <br />
+
+      <ul id="diceWords" class="list-inline"></ul>
+
+      <br />
+      <br />
+
+      <div id="diceWordsCopyableContainer" class="well well-sm">
+        <span class="label label-default">copyable text with spaces or dashes</span><br /><br />
+        <code id="diceWordsCopyableSpace"></code><br />
+        <code id="diceWordsCopyableDash"></code><br />
+      </div>
+
+      <div id="entropyEstimateContainer" class="well well-sm">
+        <span class="label label-default">entropy stats</span><br /><br />
+        <p>There are <code id="totalWords"></code> words in your password, which is ~<code id="totalEntropy"></code> bits of entropy (<code>~12.92 bits/word</code> and <code>~5.16/symbol</code>).
+          That many words equates to an  effective keyspace of ~<code id="crackTimeResultsHalfKeySpace"></code> possible keys (<code>(7776^words)/2</code> which is 50% of the total key space since on average a key will be found in that reduced keyspace). Conservatively assuming an adversary can guess passwords at the rate of a trillion (<code id="crackTimeResultsGuessesPerSecond"></code>) keys/second, <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0", target="_blank">as Edward Snowden claims</a>, an exhaustive brute-force search on half the total keyspace might take:</p>
+        <p>~<code id="crackTimeResultsSeconds"></code> seconds</p>
+        <p>~<code id="crackTimeResultsMinutes"></code> minutes</p>
+        <p>~<code id="crackTimeResultsHours"></code> hours</p>
+        <p>~<code id="crackTimeResultsDays"></code> days</p>
+        <p>~<code id="crackTimeResultsYears"></code> years</p>
+        <p>~<code id="crackTimeResultsHumanLifetimes"></code> x avg. lifespan</p>
+        <p>~<code id="crackTimeResultsMillenia"></code> millenia</p>
+        <p>~<code id="crackTimeResultsUniverseLifetimes"></code> x age Universe</p>
+        <a href='http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy' target='_blank'>Learn more about calculating entropy</a>
+      </div>
+
+      <hr />
+
+      <h2 class="text-muted">Frequently Asked Questions</h2>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">How do I use it?</h3>
+        </div>
+        <div class="panel-body">
+          <p>Click on one of the numbered passphrase generator buttons above. Click again to generate a totally new passphrase.</p>
+          <p>The <code>+ Word</code> or <code>+ Symbol</code> buttons will enhance the strength of the existing passphrase.</p>
+          <p>For extra security you can manually roll physical dice (two or five die rolls for each symbol or word respectively) and enter the results to add a word to your passphrase.</p>
+          <p>Each word or symbol displayed is shown with the index number that was used to look it up in the diceware word list.</p>
+          <p>You can copy the generated passphrase from the copyable string on the page. You should store it somewhere safe and secure. You might want to write it down and refer to the written version until you can remember it.</p>
+          <p>Close your browser window once you're done so others can't discover your passphrase.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What inspired you to create this?</h3>
+        </div>
+        <div class="panel-body">
+          I have been using Diceware for several years but its kind of a hassle for everyday passphrases. I wanted something that was easy to use, and yet secure for all but the most extreme security needs. Micah Lee's excellent overview in his article entitled <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank">Passphrases That You Can Memorize — But That Even The NSA Can't Guess</a> is a great read on the topic. For me, this is about 'scratching my own itch' and using a tool I know I can trust.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Is it safe?</h3>
+        </div>
+        <div class="panel-body">
+          It depends. Are you the target of a nation-state level adversary? If so, you should probably not use this and should instead use Diceware to roll real physical dice and look up the words from the wordlist manually. This is the official recommendation of the <a href="http://world.std.com/~reinhold/dicewarefaq.html#electronic" target="_blank">Diceware FAQ</a>. As a normal person, even if you have high security needs like protecting long term cryptographic keys, you should be safe using this tool. Using real dice is the most secure way, but relying on the random number generator should be safe as well.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Does this use a cryptographically strong random number generator to choose the words?</h3>
+        </div>
+        <div class="panel-body">
+          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. The Bytes output from the RNG are converted to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a></code> and make your own determination as to its suitability. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy so you are in good company.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What URL should I be using to access this application?</h3>
+        </div>
+        <div class="panel-body">
+          The canonical link for this version is <a href="https://www.rempe.us/diceware/" target="_blank">https://www.rempe.us/diceware/</a>.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Does this application send any data to the server?</h3>
+        </div>
+        <div class="panel-body">
+          <strong>No!</strong> Once the initial page is loaded as static files everything is done locally in your browser. None of the generated password information is sent anywhere. In fact, once you load this application in your browser you can turn off your network connection and it should work just fine.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Where is the code for this application being served from?</h3>
+        </div>
+        <div class="panel-body">
+          The entire application is just HTML, JavaScript and CSS. There is no server side component and no database. All of the JavaScript and other assets are versioned in the repository and no code is served from outside of the repository.
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">How should I use this most safely?</h3>
+        </div>
+        <div class="panel-body">
+          <p>You should ensure that:</p>
+          <ul>
+            <li>You <a href="http://world.std.com/~reinhold/diceware.html">read about Diceware</a> and understand the strengths and limitations of this approach.</li>
+            <li>Don't generate passphrases on a machine you don't own and control. No public machines!</li>
+            <li>Make sure no one else is in the room with you that can 'shoulder surf'.</li>
+            <li>You close the browser window, when you are done.</li>
+            <li>You always visit this site over an HTTPS connection. This is enforced with HSTS. A non-TLS HTTP connection opens you up to trivial man-in-the-middle attack on the code or the wordlists.</li>
+            <li>You are using the <a href="http://www.whatismybrowser.com/" target="_blank">latest version of a modern browser</a>.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">What is entropy?</h3>
+        </div>
+        <div class="panel-body">
+          <blockquote>
+            <p>Entropy is a measure of the uncertainty or randomness of a system. The concept is a difficult one to grasp fully and is confusing, even to experts. Strictly speaking, any given passphrase has an entropy of zero because it is already chosen. It is the method you use to randomly select your passphrase that has entropy. Entropy tells how hard it will be to guess the passphrase itself even if an attacker knows the method you used to select your passphrase. A passphrase is more secure if it is selected using a method that has more entropy.</p>
+            <p>Entropy is measured in bits. The outcome of a single coin toss -- "heads or tails" -- has one bit of entropy.</p>
+            <footer>Arnold G. Reinhold - <cite title="Diceware FAQ">Diceware <a href="http://world.std.com/~reinhold/dicewarefaq.html#entropy" target="_blank">FAQ</a></cite></footer>
+          </blockquote>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">How are you measuring entropy?</h3>
+        </div>
+        <div class="panel-body">
+          <p>Each standard Diceware word is assigned ~12.92 bits of entropy (<code>Math.log2(7776)</code>), each special character added is ~5.16 bits (<code>Math.log2(36)</code>). The total is the sum of the entropy in each full word or special character.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Is the source code available and can I run my own copy locally?</h3>
+        </div>
+        <div class="panel-body">
+          <p><strong>Yes!</strong> The source code is <a href="https://github.com/grempe/diceware" target="_blank">available on Github</a>. Its a simple static HTML application and you can clone and run it by opening the <code>index.html</code> file in your browser. When run locally it should work when your computer is completely offline. The latest commits in the git repository are signed with my <a href="https://www.rempe.us/keys" target="_blank">public code signing key</a>.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Would XKCD approve?</h3>
+        </div>
+        <div class="panel-body">
+          <p>Yes, <a href="https://xkcd.com/936/" target="_blank">I believe so</a>.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Who created this?</h3>
+        </div>
+        <div class="panel-body">
+          <ul>
+          <li>Arnold G. Reinhold created Diceware. You can <a href="http://world.std.com/~reinhold/" target="_blank">find him online here</a>.</li>
+          <li><a href="http://www.iamben.co.uk/" target="_blank">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) created the first version of this application and did a really nice job of it.</li>
+          <li><a href="https://www.rempe.us/" target="_blank">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank">@grempe</a>) was inspired by Ben's idea, enhanced its security, updated the code, and created a new user interface.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+    <!-- load third party libraries -->
+    <script src="js/bower_components/jquery/dist/jquery.min.js" integrity="sha384-mXQoED/lFIuocc//nss8aJOIrz7X7XruhR6bO+sGceiSyMELoVdZkN7F0oYwcFH+" crossorigin="anonymous"></script>
+    <script src="js/bower_components/big.js/big.min.js" integrity="sha384-RFUyiALFeWJ2estmJC/3QWat+YPyoKytueyI6nZ7fRhT1iOu1m9uO7TH9o1nXF/l" crossorigin="anonymous"></script>
+    <script src="js/bower_components/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/bower_components/bootstrap-validator/dist/validator.min.js" integrity="sha384-FmKM3+0e7AM9IbMW5MM3W8s8KriA1a/91QekmFW0heYNX7h5OrdWfPgQEq3d9TDf" crossorigin="anonymous"></script>
+
+    <!-- load the primary wordlist synchronously -->
+    <script src="js/lists/special-min.js" integrity="sha384-bWlPtpszg6ff0Z4tBQ/rn+w/gSyuIWPoo6FygsYKV20VXR0nvOXP4f3TMSaY/poB" crossorigin="anonymous"></script>
+    <script src="js/lists/diceware-min.js" integrity="sha384-Bxncy+d8O2xlYeIofeyogSmyxlxmxhrtOQZWVDYdHW4Ip7HR8J7z2mI8zcYhwIfH" crossorigin="anonymous"></script>
+
+    <!-- load the secondary languages async -->
+    <script async src="js/lists/alternative-min.js" integrity="sha384-n54eORJtgeTfAQr8EXYh1kA+RC9JXTgQjyKfAAZkGOtyuMKGuZGOXue90nKDvHYz" crossorigin="anonymous"></script>
+    <script async src="js/lists/catalan-min.js" integrity="sha384-/NRf3+U/qMdWbdRP6DktX6vs6VAPRB3j35wLMKNBJTU9u67mi2c+8bcDILEiqyBd" crossorigin="anonymous"></script>
+    <script async src="js/lists/dutch-min.js" integrity="sha384-OBsokApSgpybNaLHVhp52dbFEf8HNIQHJQQl7Cfpxn4KP0DrsvTmLNxzASJYMYmy" crossorigin="anonymous"></script>
+    <script async src="js/lists/esperanto-min.js" integrity="sha384-uhSNurtClUFLnKuxFVGWPI+vBxAi1jNStHJbv7Rn/krb+siXZz5rkYKMMarRN5/X" crossorigin="anonymous"></script>
+    <script async src="js/lists/french-min.js" integrity="sha384-Pg7oPeVU2FZae923gEHIUsSca2YibRZ6CotVnPFQq1LgwbX+8nAnaeZeK+VyYKQQ" crossorigin="anonymous"></script>
+    <script async src="js/lists/german-min.js" integrity="sha384-NQ4a8wq3Riqu7uK0a/neQdSjp096kS3+a+9WAA0Ta4MZbl9QnVCt4ey+2cUmsmj+" crossorigin="anonymous"></script>
+    <script async src="js/lists/japanese-min.js" integrity="sha384-V5IKlx1IG7JN80tTRq2onQDMDaufYkN+nFE+X/Zhg+WSxUkOwOpBQ8OqRm2Am2Fv" crossorigin="anonymous"></script>
+    <script async src="js/lists/maori-min.js" integrity="sha384-MVpLhxN2av8BOv6zz3tPmybNb9tFE0zVNKvUCIKi6huXBfxAa+G2chn4tiESpS7y" crossorigin="anonymous"></script>
+    <script async src="js/lists/polish-min.js" integrity="sha384-UHDIgFSN2BzQfE0E8phyBz8SfMDb7RxUmtmr+huhpyBL8KAO7G46XjjSucsAb/Yw" crossorigin="anonymous"></script>
+    <script async src="js/lists/spanish-min.js" integrity="sha384-Run924pvGSmDFc9EfHQSE1qgb/A+Ct8ZEIKh03/HzvpIQROCuc2zlUoRY2Aah2CR" crossorigin="anonymous"></script>
+    <script async src="js/lists/swedish-min.js" integrity="sha384-6JJZcWqkihCRQXrH0UtKejY0PkFd+bTx7yHuwp56kj21xVt9NTOG4yuDsHKlUAfX" crossorigin="anonymous"></script>
+
+    <!-- core application JS -->
+    <script src="js/main.js" integrity="sha384-bJBbFNRj3EuyFEgKBi7RF+Az2WOBOwJVYJj9fs/0pc7ykJbPd4zXcLsBQmltdHkj" crossorigin="anonymous"></script>
+
+  </body>
+
+</html>

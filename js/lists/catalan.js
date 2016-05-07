@@ -1,4 +1,4 @@
-var diceware = {
+var catalan = {
 11111:"1r",
 11112:"2n",
 11113:"3r",

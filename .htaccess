@@ -1,6 +1,0 @@
-
-Options +FollowSymlinks
-RewriteEngine on 
-
-RewriteCond %{HTTP_HOST} !^www.diceware.net
-RewriteRule ^(.*)$ http://www.diceware.net/$1 [R=permanent,L]
