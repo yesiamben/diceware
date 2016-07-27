@@ -9,3 +9,7 @@ body {
 #diceWords li span {
   font-size: 10px;
 }
+
+.listSelectionLink {
+  font-size: 11px;
+}
