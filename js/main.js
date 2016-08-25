@@ -21,29 +21,47 @@ function addCommas (nStr) {
   return x1 + x2
 }
 
-// Security Function. Returns the CSPRNG bytes.
-function getRandomByteArray (numElements) {
-  numElements = parseInt(numElements, 10)
-  var randomBytes = new Uint32Array(numElements)
-  var objCrypto = window.crypto || window.msCrypto
-  objCrypto.getRandomValues(randomBytes)
-  return randomBytes
+// See : https://www.reddit.com/r/crypto/comments/4xe21s/
+//
+// skip is to make result in this range:
+// 0 ≤ result < n* count < 2^31
+// (where n is the largest integer that satisfies this equation)
+// This makes result % count evenly distributed.
+//
+// P.S. if (((count - 1) & count) === 0) {...} is optional and for
+// when count is a nice binary number (2n). If this if statement is
+// removed then it might have to loop a few times. So it saves a
+// couple of micro seconds.
+function secureRandom (count) {
+  var cryptoObj = window.crypto || window.msCrypto
+  var rand = new Uint32Array(1)
+  var skip = 0x7fffffff - 0x7fffffff % count
+  var result
+
+  if (((count - 1) & count) === 0) {
+	cryptoObj.getRandomValues(rand)
+	return rand[0] & (count - 1)
+  }
+
+  do {
+	cryptoObj.getRandomValues(rand)
+	result = rand[0] & 0x7fffffff
+  } while (result >= skip)
+
+  return result % count
 }
 
-// Use a cryptographically strong random number generator
-// to get the die roll results. Returns an array of
-// objects of length numWords (default 1). Each object in
-// the array represents a word and its index and is the result of
-// numRollsPerWord die rolls (default 5).
+// Returns an array of objects of length numWords (default 1).
+// Each object in the array represents a word and its index
+// and is the result of numRollsPerWord die rolls (default 5).
 function getWords (numWords, numRollsPerWord) {
   'use strict'
 
   var i,
-    j,
-    words,
-    rollResults,
-    rollResultsJoined,
-    randomBytes
+      j,
+      words,
+      rollResults,
+      rollResultsJoined
 
   words = []
 
@@ -52,11 +70,10 @@ function getWords (numWords, numRollsPerWord) {
 
   for (i = 0; i < numWords; i += 1) {
     rollResults = []
-    randomBytes = getRandomByteArray(numRollsPerWord)
 
-    for (j = 0; j < randomBytes.length; j += 1) {
-      // Convert random Byte into 6 sided die roll
-      rollResults.push((randomBytes[j] % 6) + 1)
+    for (j = 0; j < numRollsPerWord; j += 1) {
+	  // roll a 6 sided die
+      rollResults.push(secureRandom(6) + 1)
     }
 
     rollResultsJoined = rollResults.join('')
