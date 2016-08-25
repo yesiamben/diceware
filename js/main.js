@@ -150,6 +150,9 @@ function getWordFromWordNum (wordNum) {
       case 'catalan':
         word = catalan[wordNum]
         break
+      case 'danish':
+        word = danish[wordNum]
+        break
       case 'dutch':
         word = dutch[wordNum]
         break
