@@ -1,6 +1,6 @@
 // Globals
 // which diceware language list will be used to lookup words.
-var currentList = 'diceware'
+var currentList = 'eff'
 // an array of objects representing the current random word list.
 var wordList = []
 // the running tally of total entropy in the wordList
@@ -153,11 +153,11 @@ function getWordFromWordNum (wordNum) {
       case 'danish':
         word = danish[wordNum]
         break
+      case 'diceware':
+        word = diceware[wordNum]
+        break
       case 'dutch':
         word = dutch[wordNum]
-        break
-      case 'eff':
-        word = eff[wordNum]
         break
       case 'esperanto':
         word = esperanto[wordNum]
@@ -184,7 +184,7 @@ function getWordFromWordNum (wordNum) {
         word = spanish[wordNum]
         break
       default:
-        word = diceware[wordNum]
+        word = eff[wordNum]
         break
     }
     return [{'word': word, 'wordNum': wordNum, 'entropy': calcEntropyForWordOrSymbol(false)}]
