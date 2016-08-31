@@ -1,5 +1,5 @@
 {
-  "css/app.css": "sha384-LHOtRcyhF/Yw+PCRaDeINl/eVTiLPutNunrQ9fNfqMecyWQOcV54Mfo4M8oZ/E+x",
+  "css/app.css": "sha384-3e+c0/m926yWN09Kgcr/qZB1pTB1PQcakvGQuD8+DcmaXrenl2PmVqm1JnymZb7d",
   "js/bower_components/big.js/big.js": "sha384-ZsNvqMKF6VPeJL3df7RyNU3wP4DY9aqK6LjRm/SOLLmSOABmDNsty+iLoKr2wap6",
   "js/bower_components/big.js/big.min.js": "sha384-RFUyiALFeWJ2estmJC/3QWat+YPyoKytueyI6nZ7fRhT1iOu1m9uO7TH9o1nXF/l",
   "js/bower_components/bootstrap/dist/js/bootstrap.js": "sha384-nbu0EcklP74/4DaTXgE8DZcxAX458y/YsSqsK9R31nCkAtdJC5tHRoMsGlNqpo2H",
@@ -154,6 +154,7 @@
   "js/lists/eff.js": "sha384-me/LCjMALqjqZPqqH5n/EEHyQzvp+DB+MCkohcsZ5SJ1D/KqOr31w6SrshieB2+y",
   "js/lists/esperanto-min.js": "sha384-uhSNurtClUFLnKuxFVGWPI+vBxAi1jNStHJbv7Rn/krb+siXZz5rkYKMMarRN5/X",
   "js/lists/esperanto.js": "sha384-w4WvgOoAWv+xnnS/2iVtXDxVhCCZMYvoZ5Fpc2vLVQMLfa29zLAKJRkhftn7OIeg",
+  "js/lists/finnish.js": "sha384-esePznbzffbG3RNDNnjDecq3YDy1kZYtKQUFXIEcRakNhlZs65OfYOTavRpNqToA",
   "js/lists/french-min.js": "sha384-Pg7oPeVU2FZae923gEHIUsSca2YibRZ6CotVnPFQq1LgwbX+8nAnaeZeK+VyYKQQ",
   "js/lists/french.js": "sha384-70VWhzsiRIiWQPqksy8aYEgBLSKJmY1cvrYFf3s5dofVawJgKfmUNBwZJ4+RITjK",
   "js/lists/german-min.js": "sha384-NQ4a8wq3Riqu7uK0a/neQdSjp096kS3+a+9WAA0Ta4MZbl9QnVCt4ey+2cUmsmj+",
@@ -170,7 +171,7 @@
   "js/lists/special.js": "sha384-egOKJXdbsTvlnBigm0Ix0V8t9h8C7sSeLpxgizHUK7AnbqgRczCqC6zu0gj9MajO",
   "js/lists/swedish-min.js": "sha384-6JJZcWqkihCRQXrH0UtKejY0PkFd+bTx7yHuwp56kj21xVt9NTOG4yuDsHKlUAfX",
   "js/lists/swedish.js": "sha384-+M0w9dHO97Rpy4XfkrauF9V6soGnkK7d9EErQKbJtrnfJlQpiZARblYlggbejujG",
-  "js/main.js": "sha384-3qGWc/MbZDWTUWpaKkhpo+vb7DbnKqNjikIGYWuEGzfst0dzP5l6WTPrIPkgebfe",
+  "js/main.js": "sha384-HWVqlMM+oWeVZkwEBYeFGvqUK8UoVmFdC38vyB776GwQARkwLnddmRfBJJOZvk3+",
   "js/bower_components/bootstrap/dist/css/bootstrap-theme.css": "sha384-JB289Xamg1OVEr2/YKk9BwZFj1AUbKcQkKPcaBmM2vUHThbPLCmLEHrPn+RwH3SC",
   "js/bower_components/bootstrap/dist/css/bootstrap-theme.min.css": "sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r",
   "js/bower_components/bootstrap/dist/css/bootstrap.css": "sha384-12jyvLdRujy7xPBSEsRChlYNcKKODOnVcrqexeULMkmGGzBmM9ms6CT1HGxtu96M",

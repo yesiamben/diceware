@@ -179,6 +179,9 @@ function getWordFromWordNum (wordNum) {
       case 'esperanto':
         word = esperanto[wordNum]
         break
+      case 'finnish':
+        word = finnish[wordNum]
+        break
       case 'french':
         word = french[wordNum]
         break
