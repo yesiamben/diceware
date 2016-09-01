@@ -194,6 +194,9 @@ function getWordFromWordNum (wordNum) {
       case 'maori':
         word = maori[wordNum]
         break
+      case 'norwegian':
+        word = norwegian[wordNum]
+        break
       case 'polish':
         word = polish[wordNum]
         break
