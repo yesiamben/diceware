@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="An easy way to generate a Diceware passphase.">
+    <meta name="description" content="An easy way to generate a Diceware passphase or password.">
     <link rel="shortcut icon" href="favicon.ico">
-    <title>Diceware Secure Passphrase Generator</title>
+    <title>Diceware Secure Passphrase and Password Generator</title>
     <link rel="stylesheet" href="js/bower_components/bootstrap/dist/css/bootstrap.min.css" type="text/css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/app.css" type="text/css" integrity="sha384-PxEoEfoht/4p3zhoZ4g/DWVF/KznvesBxHwy2sp1ufg+ZAc0KQQYgiXoUOduQODX" crossorigin="anonymous">
   </head>
@@ -55,16 +55,17 @@
       <div class="page-header">
         <h1 id="listTitleHeader"><span class="text-capitalize"></span>&nbsp;<small>wordlist</small></h1>
         <p class="lead">
-          <a href="http://world.std.com/~reinhold/diceware.html" target="_blank">Diceware</a> is used
-          to generate cryptographically strong passphrases. It is based on the principle that truly
+          <a href="http://world.std.com/~reinhold/diceware.html" target="_blank" rel="noopener">Diceware</a> is used
+          to generate cryptographically strong passphrases. Don't let that frighten you away though,
+          a passphrase is just a password made of words you can remember. It is based on the principle that truly
           random selection of words from a
-          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank">wordlist</a>,
+          <a href="http://world.std.com/~reinhold/diceware.wordlist.asc" target="_blank" rel="noopener">wordlist</a>,
           can result in easily memorable passwords that are also extremely resistant to attack.
           Traditional Diceware uses rolls of physical dice, this application uses a strong random number
           generator in place of the dice.
 
-          Passwords that are <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank">six words</a>
-          or longer are thought to be safe for very high security applications.
+          Passwords that are <a href="http://world.std.com/~reinhold/dicewarefaq.html#howlong" target="_blank" rel="noopener">six words</a>
+          or longer are thought to be safe for any very high security applications.
         </p>
       </div>
 
@@ -137,12 +138,12 @@
           50% of all phrases in the keyspace to find your phrase. The time it
           takes to discover your passphrase is based on how many guesses per
           second your attacker can muster. At the lower end in 2016 a small
-          cluster of GPU's have <a href='https://gist.github.com/epixoip/a83d38f412b4737e99bbef804a270c40/revisions'>demonstrated the ability to crack</a>
+          cluster of GPU's have <a href='https://gist.github.com/epixoip/a83d38f412b4737e99bbef804a270c40/revisions' target="_blank" rel="noopener">demonstrated the ability to crack</a>
           ~<code>350</code> billion hashes/second. A nation state actor like the
-          NSA <a href="https://pthree.org/2013/04/16/password-attacks-part-i-the-brute-force-attack/">may be able to perform quadrillions/second</a>.
+          NSA <a href="https://pthree.org/2013/04/16/password-attacks-part-i-the-brute-force-attack/" target="_blank" rel="noopener">may be able to perform quadrillions/second</a>.
           Conservatively assuming a professional adversary can guess passwords
           at the rate of a <code id="crackTimeResultsGuessesPerSecond"></code> keys/second
-          (Edward Snowden <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0" target="_blank">suggests being prepared for a Trillion guesses per second</a>), an
+          (Edward Snowden <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0" target="_blank" rel="noopener">suggests being prepared for a Trillion guesses per second</a>), an
           exhaustive brute-force search on 50% of the total keyspace might take:</p>
         <p>~<code id="crackTimeResultsSeconds"></code> seconds</p>
         <p>~<code id="crackTimeResultsMinutes"></code> minutes</p>
@@ -152,7 +153,7 @@
         <p>~<code id="crackTimeResultsHumanLifetimes"></code> x avg. lifespan</p>
         <p>~<code id="crackTimeResultsMillenia"></code> millenia</p>
         <p>~<code id="crackTimeResultsUniverseLifetimes"></code> x age Universe</p>
-        <a href='http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy' target='_blank'>Learn more about calculating entropy</a>
+        <a href='http://world.std.com/~reinhold/dicewarefaq.html#calculatingentropy' target="_blank" rel="noopener">Learn more about calculating entropy</a>
       </div>
 
       <hr />
@@ -178,7 +179,7 @@
           <h3 class="panel-title">What inspired you to create this?</h3>
         </div>
         <div class="panel-body">
-          I have been using Diceware for several years but its kind of a hassle for everyday passphrases. I wanted something that was easy to use, and yet secure for all but the most extreme security needs. Micah Lee's excellent overview in his article entitled <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank">Passphrases That You Can Memorize — But That Even The NSA Can't Guess</a> is a great read on the topic. For me, this is about 'scratching my own itch' and using a tool I know I can trust.
+          I have been using Diceware for several years but its kind of a hassle for everyday passphrases. I wanted something that was easy to use, and yet secure for all but the most extreme security needs. Micah Lee's excellent overview in his article entitled <a href="https://firstlook.org/theintercept/2015/03/26/passphrases-can-memorize-attackers-cant-guess/" target="_blank" rel="noopener">Passphrases That You Can Memorize — But That Even The NSA Can't Guess</a> is a great read on the topic. For me, this is about 'scratching my own itch' and using a tool I know I can trust.
         </div>
       </div>
 
@@ -187,7 +188,7 @@
           <h3 class="panel-title">Is it safe?</h3>
         </div>
         <div class="panel-body">
-          It depends. Are you the target of a nation-state level adversary? If so, you should probably not use this and should instead use Diceware to roll real physical dice and look up the words from the wordlist manually. This is the official recommendation of the <a href="http://world.std.com/~reinhold/dicewarefaq.html#electronic" target="_blank">Diceware FAQ</a>. As a normal person, even if you have high security needs like protecting long term cryptographic keys, you should be safe using this tool. Using real dice is the most secure way, but relying on the random number generator should be safe as well.
+          It depends. Are you the target of a nation-state level adversary? If so, you should probably not use this and should instead use Diceware to roll real physical dice and look up the words from the wordlist manually. This is the official recommendation of the <a href="http://world.std.com/~reinhold/dicewarefaq.html#electronic" target="_blank" rel="noopener">Diceware FAQ</a>. As a normal person, even if you have high security needs like protecting long term cryptographic keys, you should be safe using this tool. Using real dice is the most secure way, but relying on the random number generator should be safe as well.
         </div>
       </div>
 
@@ -196,7 +197,7 @@
           <h3 class="panel-title">Does this use a cryptographically strong random number generator to choose the words?</h3>
         </div>
         <div class="panel-body">
-          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. The Bytes output from the RNG are converted to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank">window.crypto.getRandomValues()</a></code> and make your own determination as to its suitability. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy so you are in good company.
+          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. The Bytes output from the RNG are converted to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank" rel="noopener">window.crypto.getRandomValues()</a></code> and make your own determination as to its suitability. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy so you are in good company.
         </div>
       </div>
 
@@ -205,7 +206,7 @@
           <h3 class="panel-title">What URL should I be using to access this application?</h3>
         </div>
         <div class="panel-body">
-          The canonical link for this version is <a href="https://www.rempe.us/diceware/" target="_blank">https://www.rempe.us/diceware/</a>.
+          The canonical link for this version is <a href="https://www.rempe.us/diceware/" target="_blank" rel="noopener">https://www.rempe.us/diceware/</a>.
         </div>
       </div>
 
@@ -234,12 +235,12 @@
         <div class="panel-body">
           <p>You should ensure that:</p>
           <ul>
-            <li>You <a href="http://world.std.com/~reinhold/diceware.html">read about Diceware</a> and understand the strengths and limitations of this approach.</li>
+            <li>You <a href="http://world.std.com/~reinhold/diceware.html" target="_blank" rel="noopener">read about Diceware</a> and understand the strengths and limitations of this approach.</li>
             <li>Don't generate passphrases on a machine you don't own and control. No public machines!</li>
             <li>Make sure no one else is in the room with you that can 'shoulder surf'.</li>
             <li>You close the browser window, when you are done.</li>
-            <li>You always visit this site over an HTTPS connection. This is enforced with HSTS. A non-TLS HTTP connection opens you up to trivial man-in-the-middle attack on the code or the wordlists.</li>
-            <li>You are using the <a href="http://www.whatismybrowser.com/" target="_blank">latest version of a modern browser</a>.</li>
+            <li>You always visit this site over a TLS (HTTPS) connection. This is enforced with HSTS. A non-TLS HTTP connection opens you up to trivial man-in-the-middle attack on the code or the wordlists.</li>
+            <li>You are using the <a href="http://www.whatismybrowser.com/" target="_blank" rel="noopener">latest version of a modern browser</a>.</li>
           </ul>
         </div>
       </div>
@@ -252,7 +253,7 @@
           <blockquote>
             <p>Entropy is a measure of the uncertainty or randomness of a system. The concept is a difficult one to grasp fully and is confusing, even to experts. Strictly speaking, any given passphrase has an entropy of zero because it is already chosen. It is the method you use to randomly select your passphrase that has entropy. Entropy tells how hard it will be to guess the passphrase itself even if an attacker knows the method you used to select your passphrase. A passphrase is more secure if it is selected using a method that has more entropy.</p>
             <p>Entropy is measured in bits. The outcome of a single coin toss -- "heads or tails" -- has one bit of entropy.</p>
-            <footer>Arnold G. Reinhold - <cite title="Diceware FAQ">Diceware <a href="http://world.std.com/~reinhold/dicewarefaq.html#entropy" target="_blank">FAQ</a></cite></footer>
+            <footer>Arnold G. Reinhold - <cite title="Diceware FAQ">Diceware <a href="http://world.std.com/~reinhold/dicewarefaq.html#entropy" target="_blank" rel="noopener">FAQ</a></cite></footer>
           </blockquote>
         </div>
       </div>
@@ -271,7 +272,7 @@
           <h3 class="panel-title">Is the source code available and can I run my own copy locally?</h3>
         </div>
         <div class="panel-body">
-          <p><strong>Yes!</strong> The source code is <a href="https://github.com/grempe/diceware" target="_blank">available on Github</a>. Its a simple static HTML application and you can clone and run it by opening the <code>index.html</code> file in your browser. When run locally it should work when your computer is completely offline. The latest commits in the git repository are signed with my <a href="https://www.rempe.us/keys" target="_blank">public code signing key</a>.</p>
+          <p><strong>Yes!</strong> The source code is <a href="https://github.com/grempe/diceware" target="_blank" rel="noopener">available on Github</a>. Its a simple static HTML application and you can clone and run it by opening the <code>index.html</code> file in your browser. When run locally it should work when your computer is completely offline. The latest commits in the git repository are signed with my <a href="https://www.rempe.us/keys" target="_blank" rel="noopener">public code signing key</a>.</p>
         </div>
       </div>
 
@@ -280,7 +281,7 @@
           <h3 class="panel-title">Would XKCD approve?</h3>
         </div>
         <div class="panel-body">
-          <p>Yes, <a href="https://xkcd.com/936/" target="_blank">I believe so</a>.</p>
+          <p>Yes, <a href="https://xkcd.com/936/" target="_blank" rel="noopener">I believe so</a>.</p>
         </div>
       </div>
 
@@ -290,9 +291,9 @@
         </div>
         <div class="panel-body">
           <ul>
-          <li>Arnold G. Reinhold created Diceware. You can <a href="http://world.std.com/~reinhold/" target="_blank">find him online here</a>.</li>
-          <li><a href="http://www.iamben.co.uk/" target="_blank">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank">@yesiamben</a>) created the first version of this application and did a really nice job of it.</li>
-          <li><a href="https://www.rempe.us/" target="_blank">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank">@grempe</a>) was inspired by Ben's idea, enhanced its security, updated the code, and created a new user interface.</li>
+          <li>Arnold G. Reinhold created Diceware. You can <a href="http://world.std.com/~reinhold/" target="_blank" rel="noopener">find him online here</a>.</li>
+          <li><a href="http://www.iamben.co.uk/" target="_blank" rel="noopener">Ben Pritchard</a> (<a href="http://twitter.com/yesiamben" target="_blank" rel="noopener">@yesiamben</a>) created the first version of this application and did a really nice job of it.</li>
+          <li><a href="https://www.rempe.us/" target="_blank" rel="noopener">Glenn Rempe</a> (<a href="http://twitter.com/grempe" target="_blank" rel="noopener">@grempe</a>) was inspired by Ben's idea, enhanced its security, updated the code, and created a new user interface.</li>
           </ul>
         </div>
       </div>
