@@ -245,7 +245,7 @@ function displayCrackTime (words) {
   var crackTimeResults = calcCrackTime(words.length)
 
   $('#crackTimeResultsGuessesPerSecond').text(addCommas(crackTimeResults.guessesPerSec.toFixed(0)))
-  $('#crackTimeResultsHalfKeySpace').text(addCommas(crackTimeResults.halfKeySpace.toFixed(0)))
+  $('#crackTimeResultsKeySpace').text(addCommas(crackTimeResults.keySpace.toFixed(0)))
 
   $('#crackTimeResultsSeconds').text(
     (crackTimeResults.seconds > 1) ? addCommas(crackTimeResults.seconds.toFixed(0)) : addCommas(crackTimeResults.seconds.toFixed(2))

@@ -128,8 +128,25 @@
 
       <div id="entropyEstimateContainer" class="well well-sm">
         <span class="label label-default">entropy stats</span><br /><br />
-        <p>There are <code id="totalWords"></code> words in your password, which is ~<code id="totalEntropy"></code> bits of entropy (<code>~12.92 bits/word</code> and <code>~5.16/symbol</code>).
-          That many words equates to an  effective keyspace of ~<code id="crackTimeResultsHalfKeySpace"></code> possible keys (<code>(7776^words)/2</code> which is 50% of the total key space since on average a key will be found in that reduced keyspace). Conservatively assuming an adversary can guess passwords at the rate of a trillion (<code id="crackTimeResultsGuessesPerSecond"></code>) keys/second, <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0" target="_blank">as Edward Snowden claims</a>, an exhaustive brute-force search on half the total keyspace might take:</p>
+        <p>There are <code id="totalWords"></code> words in your password, resulting
+          in ~<code id="totalEntropy"></code> bits of entropy (~<code>12.92 bits/word</code>,
+          ~<code>10 bits/letter</code>, and ~<code>5.16 bits/symbol</code>). That
+          many words equates to a total keyspace of ~<code id="crackTimeResultsKeySpace"></code>
+          possible phrases <code>(7776^WordsInPhrase)</code>. An adversary might
+          get lucky and guess your phrase on the first try, though the chances of
+          that happening are very slim. On the other hand, the brute-force attacker
+          might be forced to try all of the keys in the keyspace to finally find
+          that the last guess was the correct one. On average, it takes trying
+          50% of all phrases in the keyspace to find your phrase. The time it
+          takes to discover your passphrase is based on how many guesses per
+          second your attacker can muster. At the lower end in 2016 a small
+          cluster of GPU's have <a href='https://gist.github.com/epixoip/a83d38f412b4737e99bbef804a270c40/revisions'>demonstrated the ability to crack</a>
+          ~<code>350</code> billion hashes/second. A nation state actor like the
+          NSA <a href="https://pthree.org/2013/04/16/password-attacks-part-i-the-brute-force-attack/">may be able to perform quadrillions/second</a>.
+          Conservatively assuming a professional adversary can guess passwords
+          at the rate of a <code id="crackTimeResultsGuessesPerSecond"></code> keys/second
+          (Edward Snowden <a href="http://www.nytimes.com/2013/08/18/magazine/laura-poitras-snowden.html?pagewanted=all&_r=0" target="_blank">suggests being prepared for a Trillion guesses per second</a>), an
+          exhaustive brute-force search on 50% of the total keyspace might take:</p>
         <p>~<code id="crackTimeResultsSeconds"></code> seconds</p>
         <p>~<code id="crackTimeResultsMinutes"></code> minutes</p>
         <p>~<code id="crackTimeResultsHours"></code> hours</p>
