@@ -1,0 +1,15 @@
+{
+  "name": "diceware",
+  "version": "1.0.0",
+  "description": "A Diceware passphrase generator",
+  "main": "index.js",
+  "repository": "https://github.com/grempe/diceware.git",
+  "author": "Glenn Rempe <glenn@rempe.us>",
+  "license": "MIT",
+  "dependencies": {
+    "big.js": "^5.0.3",
+    "bootstrap": "3.3.6",
+    "bootstrap-validator": "^0.11.9",
+    "jquery": "^2.2.0"
+  }
+}
