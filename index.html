@@ -125,8 +125,11 @@
 
       <div id="diceWordsCopyableContainer" class="well well-sm">
         <span class="label label-default">copyable text with spaces or dashes</span><br /><br />
-        <code id="diceWordsCopyableSpace"></code><br />
-        <code id="diceWordsCopyableDash"></code><br />
+        <code id="diceWordsCopyableSpace"></code>
+        <button class="btn btn-default btn-xs copy-button" data-clipboard-action="copy" data-clipboard-target="#diceWordsCopyableSpace">Copy</button><br />
+        <code id="diceWordsCopyableDash"></code>
+        <button class="btn btn-default btn-xs copy-button" data-clipboard-target="#diceWordsCopyableDash">Copy</button>
+        <br />
       </div>
 
       <div id="entropyEstimateContainer" class="well well-sm">
@@ -310,6 +313,7 @@
     <script src="node_modules/big.js/big.min.js" integrity="sha384-aUyJBjeUazb4Fyu3Z2JWpswV+nxSEXdTKVIQJqYqtMl7ym3H21TbUyk2sqRySVVj" crossorigin="anonymous"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="node_modules/bootstrap-validator/dist/validator.min.js" integrity="sha384-38PYlsq0vWFYdiwAXpB0nFeTgsOMC8AyIFC5g/qDp0ihLbjeYiFAWz3rcNVR1+lI" crossorigin="anonymous"></script>
+    <script src="node_modules/clipboard/dist/clipboard.min.js" integrity="sha384-5tfO0soa+FisnuBhaHP2VmPXQG/JZ8dLcRL43IkJFzbsXTXT6zIX8q8sIT0VSe2G" crossorigin="anonymous"></script>
 
     <!-- load the primary wordlist synchronously -->
     <script src="lists/special-min.js" integrity="sha384-bWlPtpszg6ff0Z4tBQ/rn+w/gSyuIWPoo6FygsYKV20VXR0nvOXP4f3TMSaY/poB" crossorigin="anonymous"></script>
@@ -338,7 +342,7 @@
     <script async src="lists/swedish-min.js" integrity="sha384-6JJZcWqkihCRQXrH0UtKejY0PkFd+bTx7yHuwp56kj21xVt9NTOG4yuDsHKlUAfX" crossorigin="anonymous"></script>
 
     <!-- core application JS -->
-    <script src="index.js" integrity="sha384-MCwCuRKPtdZdDo8WvC3eO5VmhoOQaZAsRuUQ/Fi4sj5QptdeWNgP6YGIn/3gGTca" crossorigin="anonymous"></script>
+    <script src="index.js" integrity="sha384-gSWvwLjtk9D9/TjPoZijwEquFBpJc2+eyfUwB0kXzXpvQCIMQK0eQ7oh9SfJoGZf" crossorigin="anonymous"></script>
 
   </body>
 

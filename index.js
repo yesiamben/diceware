@@ -311,6 +311,9 @@ function resetUI () {
 $(document).ready(function () {
   'use strict'
 
+  // Instantiate clipboard.js
+  var clipboardSpace = new ClipboardJS('.copy-button')
+
   // Load any wordlist specified in the URL's hash.
   var listName = window.location.hash.substr(1)
   var nameLink = $("a.listSelectionLink[data-list='" + listName + "']")
