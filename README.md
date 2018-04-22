@@ -39,10 +39,23 @@ next to each word.
 
 If you are security conscious you are of course encouraged to download
 the [source code](https://github.com/grempe/diceware) for this app and run it
-locally by simply opening the `index.html` file. If you run it from the web
-feel free to run it without a network connection to demonstrate nothing
-is sent or received from an upstream server once the initial page load
-is complete.
+locally. Due to the security methods in use such as Subresource Integrity, you'll
+need to serve the application from a small local web server and not from a `file:///` URL.
+
+Example:
+
+```
+cd diceware
+
+# start a tiny Python web server
+# many operating systems come with
+# Python pre-installed.
+python -m SimpleHTTPServer 8080
+
+# visit http://localhost:8080
+```
+
+Another good option is to install `caddy` from [https://caddyserver.com/](https://caddyserver.com/) and run that command in this directory.
 
 ### Tin Foil Hat Version
 If you want to be *REALLY REALLY* secure. Roll the dice with a flashlight under
