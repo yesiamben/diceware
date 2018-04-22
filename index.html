@@ -203,7 +203,7 @@
           <h3 class="panel-title">Does this use a cryptographically strong random number generator to choose the words?</h3>
         </div>
         <div class="panel-body">
-          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. The Bytes output from the RNG are converted to die rolls with <code>(BYTE % 6) + 1</code>. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank" rel="noopener">window.crypto.getRandomValues()</a></code> and make your own determination as to its suitability. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy so you are in good company.
+          The JavaScript <code>window.crypto.getRandomValues()</code> CSPRNG that ships with modern browsers to get random bytes is used. You can learn more about <code><a href="https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues" target="_blank" rel="noopener">window.crypto.getRandomValues()</a></code> and make your own determination as to its suitability. Many cryptographic library authors are now targeting the browser environment and most are using this API as their primary source of entropy so you are in good company.
         </div>
       </div>
 
