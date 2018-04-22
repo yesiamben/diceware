@@ -14,7 +14,7 @@ Dir.glob('*.{js,css}').each do |file_name|
   files[file_name] = "sha384-#{Digest::SHA384.file(file_name).base64digest}"
 end
 
-Dir.glob('{css,node_modules}/**/*.{js,css}').each do |file_name|
+Dir.glob('{css,lists,node_modules}/**/*.{js,css}').each do |file_name|
   next if File.directory? file_name
   files[file_name] = "sha384-#{Digest::SHA384.file(file_name).base64digest}"
 end
